@@ -14,6 +14,19 @@
   }
 }
 
+@layer utilities {
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.7s cubic-bezier(.4,0,.2,1) both;
+    transform: translateY(12px);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
