@@ -1,11 +1,11 @@
-import AboutPage from "./about/page";
+import ExperiencePage from "./experience/page";
 import NavBar from "@/components/navBar/navBar";
 
 export default function Home() {
   return (
     <>
     <NavBar />
-    <AboutPage />
+    <ExperiencePage />
     </>
   );
 }
