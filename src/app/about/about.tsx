@@ -56,7 +56,7 @@ export default function About() {
   }
 
   return (
-    <section className="text-white px-10 py-30 flex flex-col lg:flex-row items-center justify-center gap-20">
+    <section id="about" className="text-white px-10 py-30 flex flex-col lg:flex-row items-center justify-center gap-20">
       <div
         className="w-full max-w-sm"
         ref={imgRef}
@@ -120,19 +120,3 @@ export default function About() {
     </section>
   );
 }
-
-// Tailwind CSS (add to your globals.css or tailwind.config.js if not present)
-/* 
-@layer utilities {
-  @keyframes fade-in {
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-  .animate-fade-in {
-    animation: fade-in 0.7s cubic-bezier(.4,0,.2,1) both;
-    transform: translateY(12px);
-  }
-}
-*/
