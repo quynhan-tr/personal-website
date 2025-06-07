@@ -6,10 +6,10 @@ import { experiences } from "./experience";
 
 export default function ExperiencePage() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-22 flex flex-col md:flex-row gap-12 items-start">
+    <section className="max-w-7xl mx-auto px-4 pb-33 pt-25 flex flex-col md:flex-row gap-12 items-start">
       {/* Heading on the left */}
       <div className="md:w-1/3 w-full mb-8 md:mb-0 sticky top-16 z-10">
-        <h2 className="text-5xl md:text-6xl font-serif font-semibold text-white leading-tight">
+        <h2 className="text-5xl md:text-7xl font-serif text-white leading-tight">
           Experience
         </h2>
       </div>
