@@ -10,7 +10,7 @@ export default function NavBar() {
         <a href="#about" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">ABOUT</a>
       </div>
       <div className="flex justify-center">
-        <span className="text-white text-[2.5rem] font-bold font-[Corinthia]">An Tran</span>
+        <span className="text-white text-[2rem] font-bold font-[Playfair Display]">AnTran</span>
       </div>
       <div className="flex items-center justify-end gap-2 pr-8">
         <a href="https://github.com/quynhan-tr" target="_blank" rel="noopener noreferrer" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">GITHUB</a>
