@@ -19,9 +19,9 @@ export default function Carousels() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const imageHeight = 180; 
-  const gap = 24;
-  const imageWidth = 270; 
+  const imageHeight = 240; // Increased from 180 to 240
+  const gap = 28;          // Optionally, increase gap for better spacing
+  const imageWidth = 360;  // Increased from 270 to 360
   const totalWidth = images.length * (imageWidth + gap);
   const translateX = -(scrollY % totalWidth);
 
@@ -31,11 +31,10 @@ export default function Carousels() {
     <div
       style={{
         overflow: "hidden",
-        width: "100vw",
+        width: "98.7vw",
         background: "#0d0d0d",
         padding: "20px 0",
         boxSizing: "border-box",
-        transform: "rotate(-2deg)",
       }}
     >
       <div
@@ -65,7 +64,7 @@ export default function Carousels() {
               src={src}
               alt=""
               height={imageHeight}
-              width={9999} // Large width to preserve aspect ratio
+              width={imageWidth}
               style={{
                 height: `${imageHeight}px`,
                 width: "auto",

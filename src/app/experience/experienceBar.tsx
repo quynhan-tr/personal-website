@@ -29,7 +29,7 @@ const ExperienceCard = ({
         alt={`${title} icon`}
         width={64}
         height={64}
-        className="w-16 h-16 mr-6 z-10 object-contain"
+        className="w-16 h-16 ml-4 mr-8 z-10 object-contain"
       />
 
       {/* Text Content */}
