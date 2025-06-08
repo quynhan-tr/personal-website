@@ -1,43 +1,14 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import SplitTextAnimated from "@/components/SplitTextAnimated";
 import { FiDownload } from "react-icons/fi";
 
 const intro = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
-
-function SplitTextAnimated({ text }: { text: string }) {
-  const words = text.split(" ");
-  const [visibleCount, setVisibleCount] = useState(0);
-
-  useEffect(() => {
-    if (visibleCount < words.length) {
-      const timeout = setTimeout(() => setVisibleCount(visibleCount + 1), 5);
-      return () => clearTimeout(timeout);
-    }
-  }, [visibleCount, words.length]);
-
-  return (
-    <span className="inline-block">
-      {words.map((word, idx) => (
-        <span
-          key={idx}
-          className={`inline-block transition-all duration-300 ease-in-out ${
-            idx < visibleCount
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-2"
-          }`}
-          style={{ transitionDelay: `${idx * 30}ms` }}
-        >
-          {word}&nbsp;
-        </span>
-      ))}
-    </span>
-  );
-}
 
 export default function About() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
