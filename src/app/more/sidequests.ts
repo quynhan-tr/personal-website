@@ -1,8 +1,8 @@
 const sidequests = [
   {
-    title: "Visit Greenland",
-    time: "March 2023",
-    place: "Greenland",
+    title: "We Do Wonder",
+    time: "December 2021",
+    place: "Da Nang",
     images: [
       "/images/1.jpg",
       "/images/2.jpg",
