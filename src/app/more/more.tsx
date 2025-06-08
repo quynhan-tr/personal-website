@@ -70,7 +70,7 @@ export default function More() {
             <div
               key={idx}
               ref={blockRef}
-              className="relative w-full max-w-7xl flex flex-col md:flex-row items-center justify-center min-h-screen"
+              className="relative w-full max-w-7xl flex flex-col md:flex-row items-center justify-center mt-60 mb-60"
             >
               {/* ─── Left Photo Card ─── */}
               <motion.div
