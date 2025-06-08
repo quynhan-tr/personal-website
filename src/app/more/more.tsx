@@ -10,6 +10,7 @@ import Image from "next/image";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
 import sidequests from "./sidequests";
 import { FiChevronDown } from "react-icons/fi";
+import Link from "next/link";
 
 const intro = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ...`;
 
@@ -102,9 +103,12 @@ export default function More() {
                   ))}
                 </h2>
 
-                <button className="mt-2 px-6 py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition">
+                <Link
+                  href="/underconstruction"
+                  className="mt-2 px-6 py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition inline-block"
+                >
                   SEE MORE
-                </button>
+                </Link>
 
                 <div className="w-56 h-3 mt-10 rounded-full bg-gradient-to-r from-sky-300 via-gray-200 to-sky-900 opacity-70" />
               </div>
