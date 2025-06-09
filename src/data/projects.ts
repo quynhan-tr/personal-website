@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     title: "UW Love Flow",
     techStack: ["Flask", "HTML", "CSS", "JavaScript", "PostgreSQL", "REST APIs"],
-    link: "https://uw-love-flow.onrender.com/",
+    link: "https://github.com/quynhan-tr/uw-love-flow",
   },
   {
     title: "InSync",
@@ -23,6 +23,6 @@ export const projects: Project[] = [
   {
     title: "My Portfolio",
     techStack: ["React", "TypeScript", "TailwindCSS"],
-    link: "https://atlantic.fo/inflight-magazine",
+    link: "https://antran.vercel.app/",
   },
 ];
