@@ -23,7 +23,7 @@ export default function NavBar() {
     <>
       <nav className="sticky top-0 w-full z-50 bg-transparent backdrop-blur-sm transition-colors">
         {/* Desktop Navigation */}
-        <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] items-center pt-4 pb-2 px-4 lg:px-8">
+        <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] items-center py-2 px-4 lg:px-8">
           <div className="flex items-center justify-start gap-2">
             <Link href="/more" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
               MORE
@@ -70,7 +70,7 @@ export default function NavBar() {
           
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-white px-2 pb-5 z-60 relative flex items-center justify-center"
+            className="text-white px-2 pb-2 z-60 relative flex items-center justify-center"
             aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

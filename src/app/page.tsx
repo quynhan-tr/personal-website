@@ -3,9 +3,9 @@
 import React from "react";
 import Carousels from "../components/carousels";
 import About from "../components/about";
-import ExperienceCard from "./experience/experienceBar";
-import { experiences } from "./experience/experience";
-import { projects } from "./project/projects";
+import ExperienceCard from "../components/experienceBar";
+import { experiences } from "../data/experience";
+import { projects } from "../data/projects";
 import { FiArrowRight } from "react-icons/fi";
 
 export default function Home() {
@@ -49,10 +49,24 @@ export default function Home() {
                 key={idx}
                 className="flex flex-col md:flex-row md:items-center w-full border-b border-white/10 pb-6 gap-4 md:gap-0"
               >
-                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white md:w-1/3 md:min-w-[120px] mb-2 md:mb-0">
-                  {project.title}
-                </span>
-                <div className="flex flex-wrap gap-2 md:gap-3 md:min-w-[175px] md:max-w-[350px] md:ml-8 lg:ml-35 mb-3 md:mb-0">
+                {/* Mobile: Title and Arrow together */}
+                <div className="flex items-center justify-between md:contents">
+                  <span className="text-lg md:text-xl lg:text-2xl font-serif text-white md:w-1/3 md:min-w-[120px]">
+                    {project.title}
+                  </span>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white p-1.5 rounded-full hover:bg-white hover:text-black transition flex items-center justify-center md:ml-auto md:order-3"
+                    aria-label={`View ${project.title}`}
+                  >
+                    <FiArrowRight size={18} className="md:w-2 md:h-2" />
+                  </a>
+                </div>
+                
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 md:gap-3 md:min-w-[175px] md:max-w-[350px] md:ml-8 lg:ml-35 md:order-2">
                   {project.techStack.map((tech, i) => (
                     <span
                       key={i}
@@ -62,15 +76,6 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-black text-white p-2 rounded-full self-end md:ml-auto hover:bg-white hover:text-black transition w-fit"
-                  aria-label={`View ${project.title}`}
-                >
-                  <FiArrowRight size={18} className="md:w-5 md:h-5" />
-                </a>
               </li>
             ))}
           </ul>

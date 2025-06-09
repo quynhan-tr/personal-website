@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
-import sidequests from "./sidequests";
+import sidequests from "../../data/sidequests";
 import { FiChevronDown } from "react-icons/fi";
 import Link from "next/link";
 
@@ -44,11 +44,11 @@ function SidequestBlock({
   return (
     <div
       ref={blockRef}
-      className="relative w-full max-w-7xl flex flex-col items-center justify-center mt-15 mb-15 md:mt-60 md:mb-60 px-4"
+      className="relative w-full max-w-7xl flex flex-col items-center justify-center mt-32 mb-32 md:mt-60 md:mb-60 px-4"
     >
       {/* ─── Left Photo Card ─── */}
       <motion.div
-        className="absolute inset-0 flex justify-center items-center pointer-events-none z-20 hidden md:flex"
+        className="absolute inset-0 flex justify-center items-center pointer-events-none z-40 hidden md:flex"
         style={{
           x: leftX,
           y: 0,
@@ -68,7 +68,7 @@ function SidequestBlock({
       </motion.div>
 
       {/* ─── Central Text Block ─── */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-md md:max-w-none">
+      <div className="relative z-30 flex flex-col items-center text-center px-4 max-w-md md:max-w-none">
         <div className="mb-3 md:mb-4 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-200">
           <span>{sq.time}</span>
           <span className="mx-1 md:mx-2">▶</span>
@@ -99,7 +99,7 @@ function SidequestBlock({
 
         <Link
           href="/underconstruction"
-          className="mt-2 px-4 md:px-6 pt-3 md:py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition inline-block"
+          className="mt-2 px-4 md:px-6 py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition inline-block"
         >
           SEE MORE
         </Link>
@@ -109,7 +109,7 @@ function SidequestBlock({
 
       {/* ─── Right Photo Card ─── */}
       <motion.div
-        className="absolute inset-0 flex justify-center items-center pointer-events-none z-20 hidden md:flex"
+        className="absolute inset-0 flex justify-center items-center pointer-events-none z-40 hidden md:flex"
         style={{
           x: rightX,
           y: 0,
@@ -132,7 +132,7 @@ function SidequestBlock({
 }
 
 export default function More() {
-  const SPREAD = "30%";  // Reduced spread for better mobile compatibility
+  const SPREAD = "42%";  // Adjusted spread for optimal balance
 
   return (
     <>
