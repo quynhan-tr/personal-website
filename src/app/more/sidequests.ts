@@ -13,8 +13,8 @@ const sidequests = [
     time: "Sep 2022",
     place: "Richmond Hill",
     images: [
-      "/mll/1.jpg",
-      "/mll/2.jpg",
+      "/mll/1.JPG",
+      "/mll/2.JPG",
     ],
   },
   {
@@ -22,8 +22,8 @@ const sidequests = [
     time: "Sep 2022",
     place: "Waterloo",
     images: [
-      "/jamhacks/1.jpg",
-      "/jamhacks/2.jpg",
+      "/jamhacks/1.JPG",
+      "/jamhacks/2.JPG",
     ],
   },
   {
@@ -31,8 +31,8 @@ const sidequests = [
     time: "Sep 2022",
     place: "Canada",
     images: [
-      "/images/1.jpg",
-      "/images/2.jpg",
+      "/images/1.JPG",
+      "/images/2.JPG",
     ],
   },
 ];

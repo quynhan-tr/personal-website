@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 const images = [
-  "/images/1.jpg",
-  "/images/2.jpg",
-  "/images/3.jpg",
-  "/images/4.jpg",
-  "/images/5.jpg",
-  "/images/6.jpg",
+  "/images/1.JPG",
+  "/images/2.JPG",
+  "/images/3.JPG",
+  "/images/4.JPG",
+  "/images/5.JPG",
+  "/images/6.JPG",
 ];
 
 export default function Carousels() {
