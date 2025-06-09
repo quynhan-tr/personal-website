@@ -10,83 +10,6 @@ import Link from "next/link";
 
 const intro = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ...`;
 
-// --- Types ---
-type Sidequest = {
-  title: string;
-  time: string;
-  place: string;
-  images: string[];
-};
-
-// --- Sidequest Block Component ---
-function SidequestBlock({ sq, leftVariants, rightVariants }: { sq: Sidequest, leftVariants: Variants, rightVariants: Variants }) {
-  const blockRef = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(blockRef, { amount: 0.4 });
-
-  return (
-    <div
-      ref={blockRef}
-      className="relative w-full max-w-7xl flex flex-col md:flex-row items-center justify-center mt-60 mb-60"
-    >
-      {/* ─── Left Photo Card ─── */}
-      <motion.div
-        className="absolute inset-0 flex justify-center items-center pointer-events-none z-20"
-        variants={leftVariants}
-        initial="closed"
-        animate={inView ? "open" : "closed"}
-      >
-        <Image
-          src={sq.images[0]}
-          alt={`${sq.title} left`}
-          width={480}
-          height={600}
-          className="rounded-3xl shadow-2xl w-[480px] h-[600px] object-cover"
-        />
-      </motion.div>
-
-      {/* ─── Central Text Block ─── */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4">
-        <div className="mb-4 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-200">
-          <span>{sq.time}</span>
-          <span className="mx-2">▶</span>
-          <span>{sq.place}</span>
-        </div>
-
-        <h2 className="font-serif text-6xl font-bold mb-6 leading-none">
-          {sq.title.split("*").map((w: string, i: number) => (
-            <span key={i} className="block">{w}</span>
-          ))}
-        </h2>
-
-        <Link
-          href="/underconstruction"
-          className="mt-2 px-6 py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition inline-block"
-        >
-          SEE MORE
-        </Link>
-
-        <div className="w-56 h-3 mt-10 rounded-full bg-gradient-to-r from-sky-300 via-gray-200 to-sky-900 opacity-70" />
-      </div>
-
-      {/* ─── Right Photo Card ─── */}
-      <motion.div
-        className="absolute inset-0 flex justify-center items-center pointer-events-none z-20"
-        variants={rightVariants}
-        initial="closed"
-        animate={inView ? "open" : "closed"}
-      >
-        <Image
-          src={sq.images[1]}
-          alt={`${sq.title} right`}
-          width={480}
-          height={600}
-          className="rounded-3xl shadow-2xl w-[480px] h-[600px] object-cover"
-        />
-      </motion.div>
-    </div>
-  );
-}
-
 export default function More() {
   const SPRING_OUT = { type: "spring", stiffness: 45, damping: 20 };
   const SPRING_IN   = { type: "spring", stiffness: 25, damping: 30 }; 
@@ -136,14 +59,74 @@ export default function More() {
 
       {/* --- Sidequests Section --- */}
       <section className="w-full flex flex-col items-center gap-32">
-        {sidequests.map((sq, idx) => (
-          <SidequestBlock
-            key={idx}
-            sq={sq}
-            leftVariants={leftVariants}
-            rightVariants={rightVariants}
-          />
-        ))}
+        {sidequests.map((sq, idx) => {
+          const blockRef = useRef<HTMLDivElement | null>(null);
+          const inView = useInView(blockRef, { amount: 0.4 });
+
+          return (
+            <div
+              key={idx}
+              ref={blockRef}
+              className="relative w-full max-w-7xl flex flex-col md:flex-row items-center justify-center mt-60 mb-60"
+            >
+              {/* ─── Left Photo Card ─── */}
+              <motion.div
+                className="absolute inset-0 flex justify-center items-center pointer-events-none z-20"
+                variants={leftVariants}
+                initial="closed"
+                animate={inView ? "open" : "closed"}
+              >
+                <Image
+                  src={sq.images[0]}
+                  alt={`${sq.title} left`}
+                  width={480}
+                  height={600}
+                  className="rounded-3xl shadow-2xl w-[480px] h-[600px] object-cover"
+                />
+              </motion.div>
+
+              {/* ─── Central Text Block ─── */}
+              <div className="relative z-10 flex flex-col items-center text-center px-4">
+                <div className="mb-4 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-200">
+                  <span>{sq.time}</span>
+                  <span className="mx-2">▶</span>
+                  <span>{sq.place}</span>
+                </div>
+
+                <h2 className="font-serif text-6xl font-bold mb-6 leading-none">
+                  {sq.title.split("*").map((w, i) => (
+                    <span key={i} className="block">{w}</span>
+                  ))}
+                </h2>
+
+                <Link
+                  href="/underconstruction"
+                  className="mt-2 px-6 py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition inline-block"
+                >
+                  SEE MORE
+                </Link>
+
+                <div className="w-56 h-3 mt-10 rounded-full bg-gradient-to-r from-sky-300 via-gray-200 to-sky-900 opacity-70" />
+              </div>
+
+              {/* ─── Right Photo Card ─── */}
+              <motion.div
+                className="absolute inset-0 flex justify-center items-center pointer-events-none z-20"
+                variants={rightVariants}
+                initial="closed"
+                animate={inView ? "open" : "closed"}
+              >
+                <Image
+                  src={sq.images[1]}
+                  alt={`${sq.title} right`}
+                  width={480}
+                  height={600}
+                  className="rounded-3xl shadow-2xl w-[480px] h-[600px] object-cover"
+                />
+              </motion.div>
+            </div>
+          );
+        })}
       </section>
     </>
   );
