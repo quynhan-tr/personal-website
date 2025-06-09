@@ -139,7 +139,7 @@ export default function More() {
       </section>
 
       {/* --- Sidequests Section --- */}
-      <section className="w-full flex flex-col items-center gap-32 overflow-x-hidden pb-32">
+      <section className="w-full flex flex-col items-center gap-32 overflow-x-hidden pt-5 pb-32">
         {sidequests.map((sq, idx) => (
           <SidequestBlock
             key={idx}

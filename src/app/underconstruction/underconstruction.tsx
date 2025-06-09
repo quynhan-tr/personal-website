@@ -1,16 +1,13 @@
 "use client"
 
 import React from "react";
-import Navbar from "@/components/navBar";
-import Footer from "@/components/footer";
 import { useRouter } from "next/navigation";
 
 export default function UnderConstruction() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
-      <Navbar />
+    <div className="min-h-screen flex flex-col text-white">
       <main className="flex-1 flex flex-col items-center justify-center">
         <h1 className="text-3xl text-center mb-2">Under construction...</h1>
         <button
@@ -20,7 +17,6 @@ export default function UnderConstruction() {
           Go Back
         </button>
       </main>
-      <Footer />
     </div>
   );
 }
