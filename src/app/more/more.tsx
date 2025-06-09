@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useInView, Variants } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
 import sidequests from "./sidequests";
@@ -21,15 +21,25 @@ type Sidequest = {
 // --- Sidequest Block Component ---
 function SidequestBlock({ 
   sq, 
-  leftVariants, 
-  rightVariants 
+  spread 
 }: { 
   sq: Sidequest; 
-  leftVariants: Variants; 
-  rightVariants: Variants; 
+  spread: string;
 }) {
   const blockRef = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(blockRef, { amount: 0.4 });
+  const { scrollYProgress } = useScroll({
+    target: blockRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Transform scroll progress to smooth animation values
+  const leftX = useTransform(scrollYProgress, [0, 0.4], ["0%", `-${spread}`]);
+  const leftRotate = useTransform(scrollYProgress, [0, 0.4], [0, -8]);
+  const leftScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.1]);
+
+  const rightX = useTransform(scrollYProgress, [0, 0.4], ["0%", spread]);
+  const rightRotate = useTransform(scrollYProgress, [0, 0.4], [0, 8]);
+  const rightScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.1]);
 
   return (
     <div
@@ -39,9 +49,14 @@ function SidequestBlock({
       {/* ─── Left Photo Card ─── */}
       <motion.div
         className="absolute inset-0 flex justify-center items-center pointer-events-none z-20"
-        variants={leftVariants}
-        initial="closed"
-        animate={inView ? "open" : "closed"}
+        style={{
+          x: leftX,
+          y: 0,
+          rotate: leftRotate,
+          scale: leftScale,
+          opacity: 1,
+        }}
+        transition={{ type: "spring", stiffness: 25, damping: 15 }}
       >
         <Image
           src={sq.images[0]}
@@ -79,9 +94,14 @@ function SidequestBlock({
       {/* ─── Right Photo Card ─── */}
       <motion.div
         className="absolute inset-0 flex justify-center items-center pointer-events-none z-20"
-        variants={rightVariants}
-        initial="closed"
-        animate={inView ? "open" : "closed"}
+        style={{
+          x: rightX,
+          y: 0,
+          rotate: rightRotate,
+          scale: rightScale,
+          opacity: 1,
+        }}
+        transition={{ type: "spring", stiffness: 25, damping: 15 }}
       >
         <Image
           src={sq.images[1]}
@@ -96,31 +116,7 @@ function SidequestBlock({
 }
 
 export default function More() {
-  const SPRING_OUT = { type: "spring", stiffness: 45, damping: 20 };
-  const SPRING_IN   = { type: "spring", stiffness: 25, damping: 30 }; 
   const SPREAD = "40%";  
-
-  const leftVariants: Variants = {
-    closed: {                     
-      x: 0, y: 0, rotate: 0, scale: 1, opacity: 1,
-      transition: SPRING_IN,      
-    },
-    open: {                       
-      x: `-${SPREAD}`, y: 0, rotate: -8, scale: 1.1, opacity: 1,
-      transition: SPRING_OUT,
-    },
-  };
-
-  const rightVariants: Variants = {
-    closed: {
-      x: 0, y: 0, rotate: 0, scale: 1, opacity: 1,
-      transition: SPRING_IN,
-    },
-    open: {
-      x: SPREAD, y: 0, rotate: 8, scale: 1.1, opacity: 1,
-      transition: SPRING_OUT,
-    },
-  };
 
   return (
     <>
@@ -143,17 +139,14 @@ export default function More() {
       </section>
 
       {/* --- Sidequests Section --- */}
-      <section className="w-full flex flex-col items-center gap-32">
-        {sidequests.map((sq, idx) => {
-          return (
-            <SidequestBlock
-              key={idx}
-              sq={sq}
-              leftVariants={leftVariants}
-              rightVariants={rightVariants}
-            />
-          );
-        })}
+      <section className="w-full flex flex-col items-center gap-32 overflow-x-hidden pb-32">
+        {sidequests.map((sq, idx) => (
+          <SidequestBlock
+            key={idx}
+            sq={sq}
+            spread={SPREAD}
+          />
+        ))}
       </section>
     </>
   );

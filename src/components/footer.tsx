@@ -2,7 +2,7 @@ import { FiDownload } from "react-icons/fi";
 
 export default function Footer() {
   return (
-    <footer className="w-full mt-24 pb-10">
+    <footer className="w-full mt-20 pb-10">
       <div className="flex flex-col items-center justify-center gap-5">
         <span className="text-md font-sans font-semibold mt-8 text-white uppercase tracking-wide">
           Get in touch
