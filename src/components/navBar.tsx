@@ -32,7 +32,7 @@ export default function NavBar() {
             ABOUT
           </button>
         ) : (
-          <Link href="/about#about" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
+          <Link href="/" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
             ABOUT
           </Link>
         )}
