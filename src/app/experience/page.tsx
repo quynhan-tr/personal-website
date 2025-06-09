@@ -9,7 +9,7 @@ export default function ExperiencePage() {
     <section id="experience" className="max-w-7xl mx-auto px-4 pb-15 pt-40 flex flex-col md:flex-row gap-12 items-start">
       {/* Heading on the left */}
       <div className="md:w-1/3 w-full mb-8 md:mb-0 sticky top-16 z-10">
-        <h2 className="text-5xl md:text-[3.5rem] font-serif text-white leading-tight">
+        <h2 className="text-3xl md:text-[3.5rem] font-serif text-white leading-tight">
           EXPERIENCE
         </h2>
       </div>
