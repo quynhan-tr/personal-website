@@ -1,13 +1,5 @@
-import ExperiencePage from "./experience/page";
-import ProjectPage from "./project/page";
-import AboutPage from "./about/page";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <>
-    <AboutPage />
-    <ExperiencePage />
-    <ProjectPage />
-    </>
-  );
+  redirect('/about');
 }
