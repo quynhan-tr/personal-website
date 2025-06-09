@@ -31,7 +31,7 @@ export default function ProjectsSection() {
                   className="text-white p-1.5 rounded-full hover:bg-white hover:text-black transition flex items-center justify-center md:ml-auto md:order-3"
                   aria-label={`View ${project.title}`}
                 >
-                  <FiArrowRight size={18} className="md:w-2 md:h-2" />
+                  <FiArrowRight size={18} className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               </div>
               
