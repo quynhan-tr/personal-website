@@ -27,9 +27,9 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="text-white px-10 py-30 flex flex-col lg:flex-row items-center justify-center gap-20">
+    <section id="about" className="text-white px-4 md:px-8 lg:px-10 py-16 md:py-24 lg:py-30 flex flex-col lg:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-20">
       <div
-        className="w-full max-w-sm"
+        className="w-full max-w-xs md:max-w-sm"
         ref={imgRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -55,23 +55,23 @@ export default function About() {
         />
       </div>
       <div className="max-w-xl text-center lg:text-left">
-        <h1 className="text-5xl font-semibold mb-8">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 md:mb-8">
           <SplitTextAnimated text="hello there!" />
         </h1>
-        <p className="text-lg text-gray-300 leading-7 mb-8 min-h-[7.5rem]">
+        <p className="text-base md:text-lg text-gray-300 leading-6 md:leading-7 mb-6 md:mb-8 min-h-[6rem] md:min-h-[7.5rem]">
           <SplitTextAnimated text={intro} />
         </p>
-        <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+        <div className="flex flex-wrap gap-3 md:gap-4 justify-center lg:justify-start">
           <a
             href="#experience"
-            className="border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in"
+            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-sm md:text-base"
             style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
           >
             EXPERIENCE
           </a>
           <a
             href="#projects"
-            className="border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in"
+            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-sm md:text-base"
             style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
             PROJECTS
@@ -80,11 +80,11 @@ export default function About() {
             href="/An-Tran.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition flex items-center gap-2 opacity-0 animate-fade-in"
+            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition flex items-center gap-2 opacity-0 animate-fade-in text-sm md:text-base"
             style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
           >
             <span>RESUME</span>
-            <FiDownload size={18} />
+            <FiDownload size={16} className="md:w-[18px] md:h-[18px]" />
           </a>
         </div>
       </div>

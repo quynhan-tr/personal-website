@@ -12,16 +12,32 @@ const images = [
 
 export default function Carousels() {
   const [scrollY, setScrollY] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    
+    // Initialize width
+    setWindowWidth(window.innerWidth);
+    
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  const imageHeight = 240; // Increased from 180 to 240
-  const gap = 28;          // Optionally, increase gap for better spacing
-  const imageWidth = 360;  // Increased from 270 to 360
+  // Responsive sizing
+  const isMobile = windowWidth < 768;
+  const isTablet = windowWidth >= 768 && windowWidth < 1024;
+  
+  const imageHeight = isMobile ? 160 : isTablet ? 200 : 240;
+  const gap = isMobile ? 16 : isTablet ? 20 : 28;
+  const imageWidth = isMobile ? 240 : isTablet ? 300 : 360;
+  
   const totalWidth = images.length * (imageWidth + gap);
   const translateX = -(scrollY % totalWidth);
 
@@ -31,9 +47,9 @@ export default function Carousels() {
     <div
       style={{
         overflow: "hidden",
-        width: "98.7vw",
+        width: "100vw",
         background: "#0d0d0d",
-        padding: "20px 0",
+        padding: isMobile ? "15px 0" : "20px 0",
         boxSizing: "border-box",
       }}
     >
@@ -54,7 +70,7 @@ export default function Carousels() {
               alignItems: "center",
               justifyContent: "center",
               background: "#222",
-              borderRadius: "18px",
+              borderRadius: isMobile ? "12px" : "18px",
               boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
               flex: "0 0 auto",
               overflow: "hidden",

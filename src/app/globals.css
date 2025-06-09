@@ -25,14 +25,45 @@
     animation: fade-in 0.7s cubic-bezier(.4,0,.2,1) both;
     transform: translateY(12px);
   }
+  
+  /* Responsive text utilities */
+  .text-responsive-xl {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  .text-responsive-2xl {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  .text-responsive-3xl {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  /* Mobile-friendly scrolling */
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 80px;
+    }
+  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-serif);
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
+  /* Improve text rendering on mobile */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Touch-friendly buttons and links */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
