@@ -44,7 +44,7 @@ function SidequestBlock({
   return (
     <div
       ref={blockRef}
-      className="relative w-full max-w-7xl flex flex-col items-center justify-center mt-32 mb-32 md:mt-60 md:mb-60 px-4"
+      className="relative w-full max-w-7xl flex flex-col items-center justify-center mt-15 mb-15 md:mt-60 md:mb-60 px-4"
     >
       {/* ─── Left Photo Card ─── */}
       <motion.div
@@ -99,7 +99,7 @@ function SidequestBlock({
 
         <Link
           href="/underconstruction"
-          className="mt-2 px-4 md:px-6 py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition inline-block"
+          className="mt-2 px-4 md:px-6 pt-3 md:py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition inline-block"
         >
           SEE MORE
         </Link>
