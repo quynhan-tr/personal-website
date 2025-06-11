@@ -43,8 +43,8 @@ export default function NavBar() {
             )}
           </div>
           
-          <div className="flex justify-center">
-            <Link href="/" className="text-white text-[2rem] font-bold font-serif hover:opacity-80 transition-opacity">
+          <div className="flex justify-center relative z-50">
+            <Link href="/" className="text-white text-[2rem] font-bold font-serif hover:opacity-80 transition-opacity relative z-50">
               An Tran
             </Link>
           </div>
