@@ -3,6 +3,7 @@
 import React from "react";
 import { galleries } from "@/data/galllery";
 import Image from "next/image";
+import SplitTextAnimated from "@/components/SplitTextAnimated";
 
 export default function GalleryPage({ params }: { params: { slug: string } }) {
   const gallery = galleries.find(g => g.slug === params.slug);
@@ -22,48 +23,72 @@ export default function GalleryPage({ params }: { params: { slug: string } }) {
   const location = gallery.location;
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center px-2 pb-16">
-      {/* Title */}
-      <h1 className="text-5xl md:text-7xl font-serif font-bold text-center mt-12 mb-8 tracking-tight">
-        {gallery.title}
-      </h1>
-
-      {/* Banner */}
-      <div className="w-full max-w-4xl aspect-[3/1.5] rounded-3xl overflow-hidden mb-8 shadow-xl">
+    <div className="min-h-screen bg-[#121416] text-white flex flex-col items-center px-0 pb-16">
+      {/* Banner Header */}
+      <div className="relative w-screen h-[55vh] min-h-[350px] max-h-[600px] overflow-hidden">
         <Image
           src={gallery.banner}
           alt={gallery.title}
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
         />
-      </div>
-
-      {/* Date and Location */}
-      <div className="flex flex-col items-center justify-center mb-6">
-        <div className="uppercase tracking-widest text-sm font-semibold text-gray-200 mb-2">
-          {date} <span className="mx-2">▶</span> {location}
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent" />
+        {/* Centered Text Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-4xl md:text-7xl font-serif font-bold mb-4 tracking-tight drop-shadow-lg">
+            {gallery.title}
+          </h1>
+          <div className="uppercase tracking-widest text-sm font-semibold text-gray-200 mb-2">
+            {date} <span className="mx-2">▶</span> {location}
+          </div>
+          <div className="max-w-2xl text-center text-lg md:text-xl text-gray-200 font-serif mb-2">
+            <SplitTextAnimated text={gallery.description} />
+          </div>
         </div>
       </div>
 
-      {/* Description */}
-      <div className="max-w-2xl text-center text-lg md:text-xl text-gray-200 font-serif mb-12">
-        {gallery.description}
-      </div>
+      {/* Scrollable Gallery with Overlap */}
+      <div className="flex flex-col items-center w-full mt-16">
+        {gallery.photos.map((photo, index) => {
+          // Patterned horizontal shift: left, right, center, randomize a bit
+          const shifts = [
+            "-translate-x-8", // left
+            "translate-x-8",  // right
+            "translate-x-0",  // center
+            "-translate-x-4", // slightly left
+            "translate-x-4",  // slightly right
+          ];
+          const shift = shifts[index % shifts.length];
 
-      {/* Scrollable Gallery */}
-      <div className="flex flex-col items-center w-full gap-12">
-        {gallery.photos.map((photo, index) => (
-          <div key={index} className="w-full max-w-3xl rounded-3xl overflow-hidden shadow-lg">
-            <Image
-              src={photo}
-              alt={`${gallery.title} photo ${index + 1}`}
-              width={1200}
-              height={800}
-              className="object-cover w-full h-auto"
-            />
-          </div>
-        ))}
+          // Overlap with negative margin
+          const overlap = index === 0 ? "mt-10" : "-mt-13";
+
+          // Slight rotation
+          const rotate =
+            index % 3 === 0
+              ? "-rotate-2"
+              : index % 3 === 1
+              ? "rotate-2"
+              : "";
+
+          return (
+            <div
+              key={index}
+              className={`w-[99vw] max-w-5xl rounded-2xl overflow-hidden shadow-xl mb-10 ${shift} ${overlap} ${rotate} relative z-10`}
+              style={{ background: "#181a1b" }}
+            >
+              <Image
+                src={photo}
+                alt={`${gallery.title} photo ${index + 1}`}
+                width={1200}
+                height={800}
+                className="object-cover w-full h-auto"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

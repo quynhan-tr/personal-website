@@ -1,8 +1,8 @@
 export default [
   {
     title: "We Do Wonder",
-    time: "2023",
-    place: "Toronto",
+    time: "December 2021",
+    place: "Da Nang",
     images: [
       "/galleryImages/wdw/home4(1).jpg",
       "/galleryImages/wdw/home4(8).jpg"
@@ -11,8 +11,8 @@ export default [
   },
   {
     title: "MLL Leadership*Club",
-    time: "2023",
-    place: "Toronto",
+    time: "Sep 2022",
+    place: "Richmond Hill",
     images: [
       "/galleryImages/mll/1.JPG",
       "/galleryImages/mll/2.JPG"
@@ -21,8 +21,8 @@ export default [
   },
   {
     title: "JAMHacks",
-    time: "2023",
-    place: "Toronto",
+    time: "Sep 2022",
+    place: "Waterloo",
     images: [
       "/galleryImages/jamhacks/1.JPG",
       "/galleryImages/jamhacks/2.JPG"
@@ -31,7 +31,7 @@ export default [
   },
   {
     title: "More",
-    time: "2024",
+    time: "Sep 2022",
     place: "Canada",
     images: [
       "/images/1.jpg",

@@ -20,7 +20,7 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/wdw/home4(4).jpg",
       "/galleryImages/wdw/home4(5).jpg",
       "/galleryImages/wdw/home4(6).jpg",
-      "/galleryImages/wdw/home4(7).jpg",
+      "/galleryImages/wdw/cards.jpg",
       "/galleryImages/wdw/home4(8).jpg",
       "/galleryImages/wdw/home4(9).jpg",
       "/galleryImages/wdw/home4(10).jpg",
@@ -28,11 +28,10 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/wdw/street2.jpg",
       "/galleryImages/wdw/street3.jpg",
       "/galleryImages/wdw/kid1.jpg",
-      "/galleryImages/wdw/cards.jpg",
       "/galleryImages/wdw/gifts.jpg"
     ],
-    date: "2023",
-    location: "Toronto"
+    date: "December 2021",
+    location: "Da Nang"
   },
   {
     slug: "mll-leadership-club",
@@ -42,7 +41,6 @@ export const galleries: GalleryItem[] = [
     photos: [
       "/galleryImages/mll/1.JPG",
       "/galleryImages/mll/2.JPG",
-      "/galleryImages/mll/3.JPG",
       "/galleryImages/mll/4.JPG",
       "/galleryImages/mll/5.JPG",
       "/galleryImages/mll/6.JPG",
@@ -52,37 +50,32 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/mll/10.JPG",
       "/galleryImages/mll/11.JPG",
       "/galleryImages/mll/12.JPG",
-      "/galleryImages/mll/14.JPG",
       "/galleryImages/mll/15.JPG",
       "/galleryImages/mll/16.jpg",
       "/galleryImages/mll/17.JPG"
     ],
-    date: "2023",
-    location: "Toronto"
+    date: "Sep 2022",
+    location: "Richmond Hill"
   },
   {
     slug: "jamhacks",
     title: "JAMHacks",
-    banner: "/galleryImages/jamhacks/7.JPG",
+    banner: "/galleryImages/jamhacks/3.JPG",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     photos: [
       "/galleryImages/jamhacks/1.JPG",
-      "/galleryImages/jamhacks/2.JPG",
-      "/galleryImages/jamhacks/3.JPG",
       "/galleryImages/jamhacks/4.JPG",
       "/galleryImages/jamhacks/5.jpg",
       "/galleryImages/jamhacks/6.JPG",
-      "/galleryImages/jamhacks/8.JPG",
       "/galleryImages/jamhacks/9.JPG",
       "/galleryImages/jamhacks/10.JPG",
       "/galleryImages/jamhacks/11.JPG",
       "/galleryImages/jamhacks/12.JPG",
-      "/galleryImages/jamhacks/13.JPG",
       "/galleryImages/jamhacks/14.JPG",
       "/galleryImages/jamhacks/15.jpg",
       "/galleryImages/jamhacks/16.jpg"
     ],
-    date: "2023",
-    location: "Toronto"
+    date: "Sep 2022",
+    location: "Waterloo"
   }
 ];
