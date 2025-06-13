@@ -16,6 +16,7 @@ type Sidequest = {
   time: string;
   place: string;
   images: string[];
+  slug?: string; // Add slug for gallery routing
 };
 
 // --- Sidequest Block Component ---
@@ -98,7 +99,7 @@ function SidequestBlock({
         </div>
 
         <Link
-          href="/underconstruction"
+          href={sq.slug ? `/gallery/${sq.slug}` : "/gallery/underconstruction"}
           className="mt-2 px-4 md:px-6 py-2 border border-gray-300 rounded-full text-xs font-semibold tracking-widest hover:bg-white hover:text-black transition flex items-center justify-center"
         >
           SEE MORE

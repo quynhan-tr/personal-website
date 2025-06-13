@@ -1,40 +1,41 @@
-const sidequests = [
+export default [
   {
     title: "We Do Wonder",
-    time: "December 2021",
-    place: "Da Nang",
+    time: "2023",
+    place: "Toronto",
     images: [
-      "/wdw/home4(1).jpg",
-      "/wdw/home4(8).jpg",
+      "/galleryImages/wdw/home4(1).jpg",
+      "/galleryImages/wdw/home4(8).jpg"
     ],
+    slug: "we-do-wonder"
   },
   {
     title: "MLL Leadership*Club",
-    time: "Sep 2022",
-    place: "Richmond Hill",
+    time: "2023",
+    place: "Toronto",
     images: [
-      "/mll/1.JPG",
-      "/mll/2.JPG",
+      "/galleryImages/mll/1.JPG",
+      "/galleryImages/mll/2.JPG"
     ],
+    slug: "mll-leadership-club"
   },
   {
-    title: "JAMHacks 8",
-    time: "Sep 2022",
-    place: "Waterloo",
+    title: "JAMHacks",
+    time: "2023",
+    place: "Toronto",
     images: [
-      "/jamhacks/1.JPG",
-      "/jamhacks/2.JPG",
+      "/galleryImages/jamhacks/1.JPG",
+      "/galleryImages/jamhacks/2.JPG"
     ],
+    slug: "jamhacks"
   },
   {
-    title: "Others",
-    time: "Sep 2022",
+    title: "More",
+    time: "2024",
     place: "Canada",
     images: [
-      "/images/1.JPG",
-      "/images/2.JPG",
-    ],
-  },
+      "/images/1.jpg",
+      "/images/2.jpg"
+    ]
+  }
 ];
-
-export default sidequests;
