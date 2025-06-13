@@ -4,6 +4,8 @@ export interface GalleryItem {
   banner: string; // e.g. "/galleryImages/greenland-dogsled/banner.jpg"
   description: string;
   photos: string[]; // e.g. ["/galleryImages/greenland-dogsled/1.jpg", ...]
+  date: string;
+  location: string;
 }
 
 export const galleries: GalleryItem[] = [
@@ -27,9 +29,10 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/wdw/street3.jpg",
       "/galleryImages/wdw/kid1.jpg",
       "/galleryImages/wdw/cards.jpg",
-      "/galleryImages/wdw/gifts.jpg",
-      "/galleryImages/wdw/logo.jpg"
+      "/galleryImages/wdw/gifts.jpg"
     ],
+    date: "2023",
+    location: "Toronto"
   },
   {
     slug: "mll-leadership-club",
@@ -54,6 +57,8 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/mll/16.jpg",
       "/galleryImages/mll/17.JPG"
     ],
+    date: "2023",
+    location: "Toronto"
   },
   {
     slug: "jamhacks",
@@ -77,5 +82,7 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/jamhacks/15.jpg",
       "/galleryImages/jamhacks/16.jpg"
     ],
+    date: "2023",
+    location: "Toronto"
   }
 ];
