@@ -36,7 +36,7 @@ export const galleries: GalleryItem[] = [
   {
     slug: "mll-leadership-club",
     title: "MLL Leadership Club",
-    banner: "/galleryImages/mll/13.JPG",
+    banner: "/galleryImages/mll/16.JPG",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     photos: [
       "/galleryImages/mll/1.JPG",
@@ -51,7 +51,7 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/mll/11.JPG",
       "/galleryImages/mll/12.JPG",
       "/galleryImages/mll/15.JPG",
-      "/galleryImages/mll/16.jpg",
+      "/galleryImages/mll/13.JPG",
       "/galleryImages/mll/17.JPG"
     ],
     date: "Sep 2022",

@@ -72,7 +72,8 @@ export default function GalleryPage({ params }: { params: Promise<{ slug: string
           className="object-cover object-center"
           priority
         />
-        {/* Overlay for readability */}
+        {/* Black overlay for readability */}
+        <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent" />
         {/* Centered Text Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
