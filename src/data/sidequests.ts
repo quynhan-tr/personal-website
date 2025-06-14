@@ -1,4 +1,12 @@
-export default [
+export interface Sidequest {
+  title: string;
+  time: string;
+  place: string;
+  images: string[];
+  slug?: string;
+}
+
+const sidequests: Sidequest[] = [
   {
     title: "We Do Wonder",
     time: "December 2021",
@@ -39,3 +47,5 @@ export default [
     ]
   }
 ];
+
+export default sidequests;
