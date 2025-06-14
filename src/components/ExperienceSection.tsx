@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import ExperienceCard from "./experienceBar";
 import { experiences } from "../data/experience";
 
 export default function ExperienceSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
     <section id="experience" className="max-w-7xl mx-auto px-4 lg:px-8 pb-10 md:pb-15 pt-20 md:pt-40 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
       {/* Heading on the left */}
@@ -14,7 +15,13 @@ export default function ExperienceSection() {
       {/* Cards on the right */}
       <div className="flex-1 grid grid-cols-1 w-full">
         {experiences.map((exp, idx) => (
-          <ExperienceCard key={idx} {...exp} />
+          <ExperienceCard
+            key={idx}
+            {...exp}
+            open={openIndex === idx}
+            onOpen={() => setOpenIndex(idx)}
+            onClose={() => setOpenIndex(null)}
+          />
         ))}
       </div>
     </section>
