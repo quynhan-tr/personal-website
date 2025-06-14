@@ -21,7 +21,7 @@ export const experiences = [
     title: "UW Computer Science Club",
     description: "Organizing Committee Member",
     link: "https://csclub.uwaterloo.ca/",
-    techStack: []
+    techStack: [ "Event Planning", "Leadership" ]
   },
   {
     icon: "/logos/alpha.png",
@@ -29,6 +29,6 @@ export const experiences = [
     title: "Alpha Coding",
     description: "Curriculum Developer & Instructor",
     link: "https://www.linkedin.com/company/alphacoding/posts/?feedView=all",
-    techStack: ["Python", "Java", "Curriculum Design"]
+    techStack: [ "Python", "Java", "Curriculum Design" ]
   }
 ];
