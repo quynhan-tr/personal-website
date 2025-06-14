@@ -78,9 +78,9 @@ export default function GalleryPage({ params }: { params: Promise<{ slug: string
             {gallery.title}
           </h1>
           <div className="uppercase tracking-widest text-sm font-semibold text-gray-200 mb-2">
-            {date} <span className="mx-2">▶</span> {location}
+            <SplitTextAnimated text={date} /> <span className="mx-2">▶</span> <SplitTextAnimated text={location} />
           </div>
-          <div className="max-w-2xl text-center text-lg md:text-xl text-gray-200 font-serif mb-2">
+          <div className="max-w-2xl text-center text-md md:text-xl text-gray-200 font-serif mb-2">
             <SplitTextAnimated text={gallery.description} />
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function GalleryPage({ params }: { params: Promise<{ slug: string
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
               whileHover={{ scale: 1.03, boxShadow: "0 8px 32px rgba(0,0,0,0.25)" }}
             >
               <Image
