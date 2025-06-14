@@ -73,7 +73,8 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/jamhacks/12.JPG",
       "/galleryImages/jamhacks/14.JPG",
       "/galleryImages/jamhacks/15.jpg",
-      "/galleryImages/jamhacks/16.jpg"
+      "/galleryImages/jamhacks/16.jpg",
+      "/galleryImages/jamhacks/2.jpg",
     ],
     date: "Sep 2022",
     location: "Waterloo"

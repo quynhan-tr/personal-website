@@ -15,6 +15,8 @@ export default function GalleryPage({ params }: { params: Promise<{ slug: string
   const [activeIndex, setActiveIndex] = useState(0);
   const [showSidebar, setShowSidebar] = useState(false);
   const headerRef = useRef<HTMLDivElement | null>(null);
+  // --- Mobile Modal State ---
+  const [modalImg, setModalImg] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,6 +88,52 @@ export default function GalleryPage({ params }: { params: Promise<{ slug: string
         </div>
       </div>
 
+      {/* Mobile Grid Gallery */}
+      <div className="block lg:hidden w-full max-w-xl px-2 mt-10">
+        <div className="grid grid-cols-2 gap-2">
+          {gallery.photos.map((photo, idx) => (
+            <button
+              key={idx}
+              className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#181a1b]"
+              onClick={() => setModalImg(photo)}
+              aria-label={`View image ${idx + 1}`}
+            >
+              <Image
+                src={photo}
+                alt={`Gallery photo ${idx + 1}`}
+                width={800}
+                height={600}
+                className="object-cover w-full h-full"
+              />
+            </button>
+          ))}
+        </div>
+        {/* Modal/Lightbox */}
+        {modalImg && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={() => setModalImg(null)}
+          >
+            <div className="relative max-w-[90vw] max-h-[80vh] flex items-center justify-center">
+              <Image
+                src={modalImg}
+                alt="Enlarged gallery photo"
+                width={1200}
+                height={900}
+                className="object-contain w-full h-full rounded-2xl shadow-2xl"
+              />
+              <button
+                className="absolute top-2 right-2 bg-black/70 text-white rounded-full px-3 py-1 text-lg font-bold"
+                onClick={e => { e.stopPropagation(); setModalImg(null); }}
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Agenda/Thumbnail Sidebar (Desktop Only, Vertically Centered, Fade In) */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -121,8 +169,8 @@ export default function GalleryPage({ params }: { params: Promise<{ slug: string
         })}
       </motion.div>
 
-      {/* Scrollable Gallery with Overlap and Animation */}
-      <div className="flex flex-col items-center w-full mt-16">
+      {/* Scrollable Gallery with Overlap and Animation (Desktop Only) */}
+      <div className="hidden lg:flex flex-col items-center w-full mt-16">
         {gallery.photos.map((photo, index) => {
           const shifts = [
             "-translate-x-8", "translate-x-8", "translate-x-0", "-translate-x-4", "translate-x-4"
