@@ -1,12 +1,49 @@
 "use client";
 
-import React from "react";
-import { galleries } from "@/data/galllery";
+import React, { useRef, useEffect, useState, use } from "react";
+import { galleries } from "@/data/gallery";
 import Image from "next/image";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
+import { motion } from "framer-motion";
 
-export default function GalleryPage({ params }: { params: { slug: string } }) {
-  const gallery = galleries.find(g => g.slug === params.slug);
+export default function GalleryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
+  const gallery = galleries.find(g => g.slug === slug);
+
+  // --- Agenda/Thumbnail Sidebar Logic ---
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const headerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offsets = imageRefs.current.map(ref => {
+        if (!ref) return Infinity;
+        const rect = ref.getBoundingClientRect();
+        return Math.abs(rect.top - window.innerHeight / 2);
+      });
+      const minOffset = Math.min(...offsets);
+      const newActive = offsets.findIndex(offset => offset === minOffset);
+      setActiveIndex(newActive);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Intersection Observer for header visibility
+  useEffect(() => {
+    if (!headerRef.current) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        setShowSidebar(!entry.isIntersecting);
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(headerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   if (!gallery) {
     return (
@@ -25,7 +62,7 @@ export default function GalleryPage({ params }: { params: { slug: string } }) {
   return (
     <div className="min-h-screen bg-[#121416] text-white flex flex-col items-center px-0 pb-16">
       {/* Banner Header */}
-      <div className="relative w-screen h-[55vh] min-h-[350px] max-h-[600px] overflow-hidden">
+      <div ref={headerRef} className="relative w-screen h-[55vh] min-h-[350px] max-h-[600px] overflow-hidden">
         <Image
           src={gallery.banner}
           alt={gallery.title}
@@ -49,44 +86,71 @@ export default function GalleryPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
-      {/* Scrollable Gallery with Overlap */}
+      {/* Agenda/Thumbnail Sidebar (Desktop Only, Vertically Centered, Fade In) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showSidebar ? 1 : 0 }}
+        transition={{ duration: 0.4 }}
+        className="hidden lg:flex flex-col fixed right-8 top-1/2 -translate-y-1/2 z-30 gap-3 pointer-events-auto"
+      >
+        {gallery.photos.map((photo, idx) => {
+          const shifts = [
+            "-translate-x-2", "translate-x-2", "translate-x-0", "-translate-x-1", "translate-x-1"
+          ];
+          const shift = shifts[idx % shifts.length];
+          const rotate = idx % 3 === 0 ? "-rotate-2" : idx % 3 === 1 ? "rotate-2" : "";
+          const overlap = idx === 0 ? "" : "-mt-2";
+          return (
+            <button
+              key={idx}
+              onClick={() => imageRefs.current[idx]?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+              className={`rounded-lg overflow-hidden border-2 transition-all duration-200 ${shift} ${rotate} ${overlap}
+                ${activeIndex === idx ? 'border-white brightness-110 shadow-lg' : 'border-transparent brightness-75'}`}
+              style={{ width: 60, background: '#181a1b', padding: 0 }}
+              aria-label={`Go to image ${idx + 1}`}
+            >
+              <Image
+                src={photo}
+                alt={`Thumbnail ${idx + 1}`}
+                width={60}
+                height={40}
+                className="object-contain w-full h-auto"
+              />
+            </button>
+          );
+        })}
+      </motion.div>
+
+      {/* Scrollable Gallery with Overlap and Animation */}
       <div className="flex flex-col items-center w-full mt-16">
         {gallery.photos.map((photo, index) => {
-          // Patterned horizontal shift: left, right, center, randomize a bit
           const shifts = [
-            "-translate-x-8", // left
-            "translate-x-8",  // right
-            "translate-x-0",  // center
-            "-translate-x-4", // slightly left
-            "translate-x-4",  // slightly right
+            "-translate-x-8", "translate-x-8", "translate-x-0", "-translate-x-4", "translate-x-4"
           ];
           const shift = shifts[index % shifts.length];
-
-          // Overlap with negative margin
           const overlap = index === 0 ? "mt-10" : "-mt-13";
-
-          // Slight rotation
-          const rotate =
-            index % 3 === 0
-              ? "-rotate-2"
-              : index % 3 === 1
-              ? "rotate-2"
-              : "";
-
+          const rotate = index % 3 === 0 ? "-rotate-2" : index % 3 === 1 ? "rotate-2" : "";
+          const size = index % 4 === 0 ? "max-w-5xl" : "max-w-3xl";
           return (
-            <div
+            <motion.div
               key={index}
-              className={`w-[99vw] max-w-5xl rounded-2xl overflow-hidden shadow-xl mb-10 ${shift} ${overlap} ${rotate} relative z-10`}
+              ref={el => { imageRefs.current[index] = el; }}
+              className={`w-[99vw] ${size} rounded-2xl overflow-hidden shadow-xl mb-10 ${shift} ${overlap} ${rotate} relative z-10 group`}
               style={{ background: "#181a1b" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              whileHover={{ scale: 1.03, boxShadow: "0 8px 32px rgba(0,0,0,0.25)" }}
             >
               <Image
                 src={photo}
                 alt={`${gallery.title} photo ${index + 1}`}
-                width={1200}
-                height={800}
-                className="object-cover w-full h-auto"
+                width={1600}
+                height={1000}
+                className="object-cover w-full h-auto transition-transform duration-300"
               />
-            </div>
+            </motion.div>
           );
         })}
       </div>

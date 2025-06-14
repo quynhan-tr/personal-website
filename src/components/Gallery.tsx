@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { GalleryItem } from "../data/galleries.ts";
+import { GalleryItem } from "../data/gallery";
 
 interface GalleryProps {
   item: GalleryItem;
