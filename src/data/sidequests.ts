@@ -1,40 +1,51 @@
-const sidequests = [
+export interface Sidequest {
+  title: string;
+  time: string;
+  place: string;
+  images: string[];
+  slug?: string;
+}
+
+const sidequests: Sidequest[] = [
   {
     title: "We Do Wonder",
     time: "December 2021",
     place: "Da Nang",
     images: [
-      "/wdw/home4(1).jpg",
-      "/wdw/home4(8).jpg",
+      "/galleryImages/wdw/home4(1).jpg",
+      "/galleryImages/wdw/home4(8).jpg"
     ],
+    slug: "we-do-wonder"
   },
   {
     title: "MLL Leadership*Club",
     time: "Sep 2022",
     place: "Richmond Hill",
     images: [
-      "/mll/1.JPG",
-      "/mll/2.JPG",
+      "/galleryImages/mll/1.JPG",
+      "/galleryImages/mll/2.JPG"
     ],
+    slug: "mll-leadership-club"
   },
   {
-    title: "JAMHacks 8",
+    title: "JAMHacks",
     time: "Sep 2022",
     place: "Waterloo",
     images: [
-      "/jamhacks/1.JPG",
-      "/jamhacks/2.JPG",
+      "/galleryImages/jamhacks/1.JPG",
+      "/galleryImages/jamhacks/2.JPG"
     ],
+    slug: "jamhacks"
   },
   {
-    title: "Others",
+    title: "More",
     time: "Sep 2022",
     place: "Canada",
     images: [
-      "/images/1.JPG",
-      "/images/2.JPG",
-    ],
-  },
+      "/images/1.jpg",
+      "/images/2.jpg"
+    ]
+  }
 ];
 
 export default sidequests;
