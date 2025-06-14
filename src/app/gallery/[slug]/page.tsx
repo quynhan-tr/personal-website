@@ -80,12 +80,55 @@ export default function GalleryPage({ params }: { params: Promise<{ slug: string
           <h1 className="text-4xl md:text-7xl font-serif font-bold mb-4 tracking-tight drop-shadow-lg">
             {gallery.title}
           </h1>
-          <div className="uppercase tracking-widest text-sm font-semibold text-gray-200 mb-2">
-            <SplitTextAnimated text={date} /> <span className="mx-2">▶</span> <SplitTextAnimated text={location} />
+          <div className="uppercase tracking-widest text-xs md:text-sm font-semibold text-gray-200 mb-2">
+            {date} <span className="mx-2">▶</span> {location} 
           </div>
-          <div className="max-w-2xl text-center text-md md:text-xl text-gray-200 font-serif mb-2">
+        </div>
+      </div>
+      
+      <div className="w-full flex justify-center mt-6">
+        <div className="max-w-6xl rounded-xl px-4 pt-20 pb-7 text-center text-md md:text-xl text-gray-200 font-serif mx-auto">
+          {gallery.slug === 'we-do-wonder' ? (() => {
+            const desc = gallery.description;
+            const linkText = "We Do Wonder";
+            const linkIndex = desc.indexOf(linkText);
+            if (linkIndex === -1) return <SplitTextAnimated text={desc} />;
+            return (
+              <span className="inline">
+                <SplitTextAnimated text={desc.slice(0, linkIndex)} />
+                <a
+                  href="https://www.facebook.com/wedowonder"
+                  className="underline text-sky-300 hover:text-sky-400"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <SplitTextAnimated text={linkText} />
+                </a>
+                <SplitTextAnimated text={desc.slice(linkIndex + linkText.length)} />
+              </span>
+            );
+          })() : gallery.slug === 'jamhacks' ? (() => {
+            const desc = gallery.description;
+            const linkText = "JAMHacks";
+            const linkIndex = desc.indexOf(linkText);
+            if (linkIndex === -1) return <SplitTextAnimated text={desc} />;
+            return (
+              <span className="inline">
+                <SplitTextAnimated text={desc.slice(0, linkIndex)} />
+                <a
+                  href="https://www.jamhacks.ca/"
+                  className="underline text-sky-300 hover:text-sky-400"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <SplitTextAnimated text={linkText} />
+                </a>
+                <SplitTextAnimated text={desc.slice(linkIndex + linkText.length)} />
+              </span>
+            );
+          })() : (
             <SplitTextAnimated text={gallery.description} />
-          </div>
+          )}
         </div>
       </div>
 

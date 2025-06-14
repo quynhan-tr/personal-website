@@ -8,7 +8,7 @@ import sidequests from "../../data/sidequests";
 import { FiChevronDown } from "react-icons/fi";
 import Link from "next/link";
 
-const intro = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ...`;
+const intro = `welcome to a little collection of cool things I've been part of`;
 
 // --- Types ---
 type Sidequest = {

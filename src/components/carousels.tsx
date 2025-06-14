@@ -7,7 +7,6 @@ const images = [
   "/images/3.JPG",
   "/images/4.JPG",
   "/images/5.JPG",
-  "/images/6.JPG",
 ];
 
 export default function Carousels() {
