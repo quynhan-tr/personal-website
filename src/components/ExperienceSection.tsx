@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ExperienceCard from "./experienceBar";
+import ExperienceCard from "./ExperienceBar";
 import { experiences } from "../data/experience";
 
 export default function ExperienceSection() {
