@@ -36,7 +36,7 @@ export const galleries: GalleryItem[] = [
   {
     slug: "mll-leadership-club",
     title: "MLL Leadership Club",
-    banner: "/galleryImages/mll/16.JPG",
+    banner: "/galleryImages/mll/16.jpg",
     description: "At Alexander Mackenzie High School, I led the MLL (Multilingual Language Learners) Leadership Club, where I organized two annual Cultural Fairs to celebrate the diverse backgrounds of our student community through food, performances, and cultural showcases. Hoping to share the impact more widely, I reached out to the school board—and the initiative was approved to grow beyond our school, opening up opportunities for more students across the district to get involved.",
     photos: [
       "/galleryImages/mll/1.JPG",
@@ -74,7 +74,7 @@ export const galleries: GalleryItem[] = [
       "/galleryImages/jamhacks/14.JPG",
       "/galleryImages/jamhacks/15.jpg",
       "/galleryImages/jamhacks/16.jpg",
-      "/galleryImages/jamhacks/2.jpg",
+      "/galleryImages/jamhacks/2.JPG",
     ],
     date: "Sep 2022",
     location: "Waterloo, ON"

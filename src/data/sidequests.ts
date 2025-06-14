@@ -42,8 +42,8 @@ const sidequests: Sidequest[] = [
     time: "Sep 2022",
     place: "Canada",
     images: [
-      "/images/1.jpg",
-      "/images/2.jpg"
+      "/images/1.JPG",
+      "/images/2.JPG"
     ]
   }
 ];
