@@ -2,11 +2,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #121416;
+  --background: #121416; 
   --foreground: #ededed;
   --font-serif: 'Playfair Display', serif;
-  --scroll-thumb: #23272b;
-  --scroll-track: #18191a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121416;
+    --foreground: #ededed;
+  }
 }
 
 @layer utilities {
@@ -20,6 +25,8 @@
     animation: fade-in 0.7s cubic-bezier(.4,0,.2,1) both;
     transform: translateY(12px);
   }
+  
+  /* Responsive text utilities */
   .text-responsive-xl {
     @apply text-2xl md:text-3xl lg:text-4xl;
   }
@@ -29,6 +36,8 @@
   .text-responsive-3xl {
     @apply text-4xl md:text-5xl lg:text-6xl;
   }
+  
+  /* Mobile-friendly scrolling */
   @media (max-width: 768px) {
     html {
       scroll-padding-top: 80px;
@@ -40,31 +49,18 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-serif);
+  /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
+  /* Improve text rendering on mobile */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scrollbar-width: thin;
-  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
 
-/* Custom Scrollbar Styles */
-body::-webkit-scrollbar {
-  width: 12px;
-}
-body::-webkit-scrollbar-thumb {
-  background: var(--scroll-thumb);
-  border-radius: 8px;
-  border: 2px solid var(--scroll-track);
-}
-body::-webkit-scrollbar-track {
-  background: var(--scroll-track);
-  border-radius: 8px;
-}
-
+/* Touch-friendly buttons and links */
 @media (max-width: 768px) {
   button, a {
     min-height: 44px;
