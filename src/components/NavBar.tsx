@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,6 +8,10 @@ export default function NavBar() {
   const pathname = usePathname();
   const isAboutPage = pathname === '/about';
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredButton, setHoveredButton] = useState<"home" | "more" | null>(null);
+  const [highlightStyle, setHighlightStyle] = useState({});
+  const moreRef = useRef<HTMLAnchorElement | null>(null);
+  const homeRef = useRef<HTMLAnchorElement | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     if (isAboutPage) {
@@ -19,26 +23,74 @@ export default function NavBar() {
     setIsMobileMenuOpen(false); // Close mobile menu after click
   };
 
+  // Update highlight position/size
+  useLayoutEffect(() => {
+    let ref = null;
+    if ((pathname === "/more" && !hoveredButton) || hoveredButton === "more") {
+      ref = moreRef.current;
+    } else if ((pathname === "/" && !hoveredButton) || hoveredButton === "home") {
+      ref = homeRef.current;
+    }
+    if (ref) {
+      const rect = ref.getBoundingClientRect();
+      const parentRect = ref.parentElement!.getBoundingClientRect();
+      setHighlightStyle({
+        left: rect.left - parentRect.left,
+        top: rect.top - parentRect.top,
+        width: rect.width,
+        height: rect.height,
+        opacity: 1,
+      });
+    } else {
+      setHighlightStyle({ opacity: 0 });
+    }
+  }, [pathname, hoveredButton]);
+
   return (
     <>
       <nav className="sticky top-0 w-full z-50 bg-transparent backdrop-blur-sm transition-colors">
         {/* Desktop Navigation */}
         <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] items-center py-2 px-4 lg:px-8">
-          <div className="flex items-center justify-start gap-2">
-            <Link href="/more" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
+          <div className="flex items-center justify-start gap-4 relative">
+            {/* Sliding background */}
+            <span
+              className="absolute rounded-3xl bg-white/20 transition-all duration-300 ease-in-out pointer-events-none z-0"
+              style={{
+                position: "absolute",
+                ...highlightStyle,
+                transition: "all 0.3s cubic-bezier(0.4,0,0.2,1)",
+              }}
+            />
+            {/* MORE Button */}
+            <Link
+              href="/more"
+              ref={moreRef}
+              className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/more" ? "font-bold" : ""}`}
+              onMouseEnter={() => setHoveredButton("more")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
               MORE
             </Link>
-            
+            {/* HOME Button */}
             {isAboutPage ? (
-              <button 
-                onClick={() => scrollToSection('about')} 
-                className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1"
+              <button
+                ref={homeRef as any}
+                onClick={() => scrollToSection('about')}
+                className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/" ? "font-bold" : ""}`}
+                onMouseEnter={() => setHoveredButton("home")}
+                onMouseLeave={() => setHoveredButton(null)}
               >
-                ABOUT
+                HOME
               </button>
             ) : (
-              <Link href="/" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
-                ABOUT
+              <Link
+                href="/"
+                ref={homeRef}
+                className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/" ? "font-bold" : ""}`}
+                onMouseEnter={() => setHoveredButton("home")}
+                onMouseLeave={() => setHoveredButton(null)}
+              >
+                HOME
               </Link>
             )}
           </div>

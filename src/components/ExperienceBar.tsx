@@ -39,17 +39,17 @@ const ExperienceCard = ({
       {/* Icon & Text Row */}
       <div className="flex items-center w-full">
         {/* Icon */}
-        <div className="flex-shrink-0 relative z-50">
+        <div className="flex-shrink-0 relative z-40">
           <Image
             src={icon}
             alt={`${title} icon`}
             width={64}
             height={64}
-            className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ml-2 md:ml-4 mr-4 md:mr-8 relative z-50 object-contain"
+            className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ml-2 md:ml-4 mr-4 md:mr-8 relative z-40 object-contain"
           />
         </div>
         {/* Text Content */}
-        <div className="relative z-50 w-full min-w-0">
+        <div className="relative z-40 w-full min-w-0">
           <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white leading-tight mb-1">
             {title}
           </h3>
@@ -67,7 +67,7 @@ const ExperienceCard = ({
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="w-full mt-4 relative z-50"
+            className="w-full mt-4 relative z-40"
           >
             <div className="bg-[#18191b] border border-white/10 rounded-xl shadow-xl px-4 py-3 flex flex-wrap gap-2 min-w-[180px] max-w-xs">
               {techStack.map((tech, i) => (
