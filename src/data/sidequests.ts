@@ -38,7 +38,7 @@ const sidequests: Sidequest[] = [
     slug: "jamhacks"
   },
   {
-    title: "More",
+    title: "Coming soon",
     time: "Sep 2022",
     place: "Canada",
     images: [
