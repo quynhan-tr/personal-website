@@ -74,9 +74,8 @@ export default function NavBar() {
             {/* HOME Button */}
             {isAboutPage ? (
               <button
-                ref={homeRef as any}
                 onClick={() => scrollToSection('about')}
-                className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/" ? "font-bold" : ""}`}
+                className="relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1"
                 onMouseEnter={() => setHoveredButton("home")}
                 onMouseLeave={() => setHoveredButton(null)}
               >
