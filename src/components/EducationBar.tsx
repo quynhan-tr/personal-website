@@ -31,7 +31,7 @@ const EducationCard = ({
     onFocus={onOpen}
     onBlur={onClose}
   >
-    <div className="relative flex flex-col items-start p-4 md:p-6 rounded-2xl bg-[#18191b] hover:bg-transparent transition-all duration-300 overflow-visible min-h-[80px] mb-4 md:mb-6 shadow-none hover:shadow-xl">
+    <div className="relative flex flex-col items-start p-4 md:p-6 rounded-2xl bg-[#18191b] transition-all duration-300 overflow-visible min-h-[80px] mb-4 md:mb-6 shadow-none hover:shadow-xl">
       {/* Logo, School & Year Row */}
       <div className="flex items-center w-full justify-between">
         <div className="flex items-center gap-4">
