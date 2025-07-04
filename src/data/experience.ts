@@ -11,7 +11,7 @@ export const experiences = [
     icon: "/logos/dsc.svg",
     bgImage: "/banners/dsc.png",
     title: "UW Data Science Club",
-    description: "Lead Software Engineer",
+    description: "Software Developer",
     link: "https://www.uwdatascience.ca/",
     techStack: [ "React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API", "Groq API"]
   },
@@ -19,7 +19,7 @@ export const experiences = [
     icon: "/logos/csc.svg",
     bgImage: "/banners/csc.png",
     title: "UW Computer Science Club",
-    description: "Organizing Committee Member",
+    description: "Technical Organizer",
     link: "https://csclub.uwaterloo.ca/",
     techStack: [ "Event Planning", "Leadership" ]
   },
@@ -29,6 +29,6 @@ export const experiences = [
     title: "Alpha Coding",
     description: "Curriculum Developer & Instructor",
     link: "https://www.linkedin.com/company/alphacoding/posts/?feedView=all",
-    techStack: [ "Python", "Java", "Curriculum Design" ]
+    techStack: [ "Python", "Java", "API Integration", "AI Fundamentals", "Curriculum Design" ]
   }
 ];

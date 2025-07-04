@@ -8,7 +8,7 @@ export const projects: Project[] = [
   {
     title: "Jane Street Estimathon Portal",
     techStack: ["HTML", "CSS", "JavaScript", "Google Apps Script"],
-    link: "https://uw-estimathon.vercel.app/",
+    link: "https://github.com/quynhan-tr/uw-estimathon",
   },
   {
     title: "UW Love Flow",
