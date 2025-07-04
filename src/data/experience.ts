@@ -5,7 +5,7 @@ export const experiences = [
     title: "TEDxUW",
     description: "Software Engineer",
     link: "https://tedxuw2024.netlify.app/",
-    techStack: [ "React", "Next.js", "Tailwind CSS", "Supabase Auth", "Oracle" ]
+    techStack: [ "React", "Next.js", "Tailwind CSS", "Supabase", "PostgreSQL" ]
   },
   {
     icon: "/logos/dsc.svg",
@@ -13,7 +13,7 @@ export const experiences = [
     title: "UW Data Science Club",
     description: "Lead Software Engineer",
     link: "https://www.uwdatascience.ca/",
-    techStack: [ "React", "Next.js", "Tailwind CSS", "Supabase", "Node.js", "MongoDB", "Python", "SQL", "OpenAI API", "Groq API"]
+    techStack: [ "React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API", "Groq API"]
   },
   {
     icon: "/logos/csc.svg",
