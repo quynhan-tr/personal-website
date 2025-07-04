@@ -243,11 +243,6 @@ export default function NavBar() {
               </div>
             </div>
           </div>
-          
-          {/* Close instruction */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-            <p className="text-white/60 text-sm font-sans">Tap anywhere to close</p>
-          </div>
         </div>
       </div>
     </>
