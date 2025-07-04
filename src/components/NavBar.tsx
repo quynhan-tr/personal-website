@@ -3,6 +3,7 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -92,6 +93,19 @@ export default function NavBar() {
                 HOME
               </Link>
             )}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=prev'>←</a>
+              <a href='https://cs.uwatering.com/#https://www.antran.dev/' target='_blank' rel="noopener noreferrer">
+                <Image
+                  src='https://cs.uwatering.com/icon.white.svg'
+                  alt='CS Webring'
+                  width={24}
+                  height={24}
+                  style={{ width: '24px', height: 'auto', opacity: 0.8 }}
+                />
+              </a>
+              <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=next'>→</a>
+            </div>
           </div>
           
           <div className="flex justify-center relative z-50">
@@ -214,6 +228,19 @@ export default function NavBar() {
               >
                 EMAIL
               </a>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=prev'>←</a>
+                <a href='https://cs.uwatering.com/#https://www.antran.dev/' target='_blank' rel="noopener noreferrer">
+                  <Image
+                    src='https://cs.uwatering.com/icon.white.svg'
+                    alt='CS Webring'
+                    width={24}
+                    height={24}
+                    style={{ width: '24px', height: 'auto', opacity: 0.8, margin: '0 auto' }}
+                  />
+                </a>
+                <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=next'>→</a>
+              </div>
             </div>
           </div>
           
