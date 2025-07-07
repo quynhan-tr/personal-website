@@ -1,5 +1,3 @@
-import { FiDownload } from "react-icons/fi";
-
 export default function Footer() {
   return (
     <footer className="w-full mt-12 md:mt-16 lg:mt-20 pb-8 md:pb-10 px-4 md:px-8">
@@ -34,15 +32,6 @@ export default function Footer() {
             className="border border-white rounded-full px-6 md:px-7 py-3 md:py-2 text-white font-sans text-xs hover:bg-white hover:text-black transition text-center min-h-[44px] flex items-center justify-center"
           >
             GITHUB
-          </a>
-          <a
-            href="/An-Tran.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-white rounded-full px-6 md:px-7 py-3 md:py-2 flex items-center justify-center gap-2 text-white font-sans text-xs hover:bg-white hover:text-black transition min-h-[44px]"
-          >
-            <span>RESUME</span>
-            <FiDownload size={16} className="md:w-[18px] md:h-[18px]" />
           </a>
         </div>
       </div>

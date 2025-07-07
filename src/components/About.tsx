@@ -3,7 +3,6 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
-import { FiDownload } from "react-icons/fi";
 
 const intro = `I'm An, a second-year CS student at the University of Waterloo. *This site is a collection of my projects, experiences, and other things I've done. Feel free to look around!`;
 
@@ -76,16 +75,6 @@ export default function About() {
             style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
             PROJECTS
-          </a>
-          <a
-            href="/An-Tran.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition flex items-center gap-2 opacity-0 animate-fade-in text-sm md:text-base"
-            style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
-          >
-            <span>RESUME</span>
-            <FiDownload size={16} className="md:w-[18px] md:h-[18px]" />
           </a>
         </div>
       </div>
