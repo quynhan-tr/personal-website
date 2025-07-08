@@ -8,11 +8,11 @@ export default function Footer() {
         
         <div className="border border-dashed border-white/30 rounded-2xl px-4 md:px-6 pt-2 md:py-4 mb-1 md:mb-2 w-full max-w-md md:max-w-none md:w-auto">
           <a
-            href="mailto:quynhanit@email.com"
+            href="mailto:quynhanit@gmail.com"
             className="text-lg md:text-xl lg:text-2xl font-serif text-white tracking-wide block text-center break-all md:break-normal"
             style={{ letterSpacing: "0.02em" }}
           >
-            quynhanit@email.com
+            quynhanit@gmail.com
           </a>
         </div>
         
