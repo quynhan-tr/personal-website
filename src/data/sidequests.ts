@@ -9,7 +9,7 @@ export interface Sidequest {
 const sidequests: Sidequest[] = [
   {
     title: "We Do Wonder",
-    time: "December 2021",
+    time: "Dec 2021 - 2024",
     place: "Da Nang, Vietnam",
     images: [
       "/galleryImages/wdw/home4(1).jpg",
@@ -19,7 +19,7 @@ const sidequests: Sidequest[] = [
   },
   {
     title: "MLL Leadership*Club",
-    time: "Sep 2022",
+    time: "Sep 2022 - 2024",
     place: "Richmond Hill, ON",
     images: [
       "/galleryImages/mll/1.JPG",
@@ -29,7 +29,7 @@ const sidequests: Sidequest[] = [
   },
   {
     title: "JAMHacks",
-    time: "Sep 2022",
+    time: "Sep 2022 - 2023",
     place: "Waterloo, ON",
     images: [
       "/galleryImages/jamhacks/1.JPG",
