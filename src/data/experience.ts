@@ -1,10 +1,18 @@
 export const experiences = [
   {
+    icon: "/logos/propel.png",
+    bgImage: "/banners/tedx.png",
+    title: "Propel Holdings Inc",
+    description: "Software Developer",
+    link: "https://www.propelholdings.com/",
+    techStack: [ "Java", "Spring Boot", "JDBC", "SQL", "Angular", "Tomcat"]
+  },
+  {
     icon: "/logos/tedx.svg",
     bgImage: "/banners/tedx.png",
     title: "TEDxUW",
-    description: "Software Engineer",
-    link: "https://tedxuw2024.netlify.app/",
+    description: "Software Developer",
+    link: "https://www.linkedin.com/company/tedxuw",
     techStack: [ "Next.js", "Typescript", "Tailwind CSS", "NeonDB", "PostgreSQL", "OAuth" ]
   },
   {
