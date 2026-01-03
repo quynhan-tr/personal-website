@@ -20,7 +20,7 @@ export const experiences: Experience[] = [
     title: "Propel Holdings Inc",
     description: "Software Developer",
     link: "https://www.propelholdings.com/",
-    techStack: ["Java", "Spring Boot", "JDBC", "SQL", "Angular", "Tomcat"],
+    techStack: ["Java", "Spring Boot", "Angular", "TypeScript", "SQL", "RESTful API", "Google Web Toolkit", "JPA/Hibernate", "Mockito", "AWS"],
     blog: {
       type: 'content',
       title: "My Journey at Propel Holdings",
@@ -37,7 +37,7 @@ export const experiences: Experience[] = [
     title: "TEDxUW",
     description: "Software Developer",
     link: "https://www.linkedin.com/company/tedxuw",
-    techStack: ["Next.js", "Typescript", "Tailwind CSS", "NeonDB", "PostgreSQL", "OAuth"],
+    techStack: ["Next.js", "React", "Typescript", "Tailwind CSS", "Framer Motion"],
     blog: {
       type: 'link',
       url: "https://medium.com/@yourusername/building-tedxuw-site",
@@ -50,7 +50,7 @@ export const experiences: Experience[] = [
     title: "UW Data Science Club",
     description: "Software Developer",
     link: "https://www.uwdatascience.ca/",
-    techStack: ["Next.js", "Typescript", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API", "Groq API"]
+    techStack: ["Next.js", "React", "Typescript", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API"]
   },
   {
     icon: "/logos/csc.svg",

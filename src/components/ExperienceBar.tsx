@@ -103,7 +103,7 @@ const ExperienceCard = ({
               {techStack.map((tech, i) => (
                 <span
                   key={i}
-                  className="bg-black/50 border border-white/10 text-white px-3 py-1 rounded-full text-xs font-sans font-medium"
+                  className="bg-black/50 border border-white/10 text-white px-3 py-1.5 rounded-lg text-xs font-sans font-medium"
                 >
                   {tech}
                 </span>
