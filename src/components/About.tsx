@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
 
 const intro = `I'm An, a second-year CS student at the University of Waterloo. *This site is a collection of my projects, experiences, and other things I've done. Feel free to look around!`;
@@ -13,8 +14,8 @@ export default function About() {
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     const rect = imgRef.current?.getBoundingClientRect();
     if (!rect) return;
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2; 
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2; 
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
     setTilt({ x, y });
   }
 
@@ -67,15 +68,22 @@ export default function About() {
             className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-sm md:text-base"
             style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
           >
-            EXPERIENCE
+            experience
           </a>
           <a
             href="#projects"
             className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-sm md:text-base"
             style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
-            PROJECTS
+            projects
           </a>
+          <Link
+            href="/more"
+            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-sm md:text-base"
+            style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
+          >
+            more about me
+          </Link>
         </div>
       </div>
     </section>
