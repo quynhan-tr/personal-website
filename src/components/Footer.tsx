@@ -2,20 +2,20 @@ export default function Footer() {
   return (
     <footer className="w-full mt-12 md:mt-16 lg:mt-20 pb-8 md:pb-10 px-4 md:px-8">
       <div className="flex flex-col items-center justify-center gap-4 md:gap-5 max-w-4xl mx-auto">
-        <span className="text-sm md:text-md font-sans font-semibold mt-6 md:mt-8 text-white uppercase tracking-wide text-center">
+        <span className="text-sm md:text-md font-sans font-normal mt-6 md:mt-8 text-white uppercase tracking-wide text-center">
           Get in touch
         </span>
-        
+
         <div className="border border-dashed border-white/30 rounded-2xl px-4 md:px-6 pt-2 md:py-4 mb-1 md:mb-2 w-full max-w-md md:max-w-none md:w-auto">
           <a
             href="mailto:quynhanit@gmail.com"
-            className="text-lg md:text-xl lg:text-2xl font-serif text-white tracking-wide block text-center break-all md:break-normal"
+            className="text-lg md:text-xl lg:text-2xl font-[family-name:var(--font-title)] text-white tracking-wide block text-center break-all md:break-normal"
             style={{ letterSpacing: "0.02em" }}
           >
             quynhanit@gmail.com
           </a>
         </div>
-        
+
         <div className="flex flex-row gap-3 md:gap-6 mt-1 md:mt-2 w-full sm:w-auto">
           <a
             href="https://www.linkedin.com/in/quynhan05/"

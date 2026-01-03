@@ -1,11 +1,35 @@
-export const experiences = [
+export interface Experience {
+  icon: string;
+  bgImage: string;
+  title: string;
+  description: string;
+  link: string;
+  techStack: string[];
+  blog?: {
+    type: 'link' | 'content';
+    url?: string;
+    content?: string;
+    title?: string;
+  };
+}
+
+export const experiences: Experience[] = [
   {
     icon: "/logos/propel.png",
     bgImage: "/banners/propelholdings.png",
     title: "Propel Holdings Inc",
     description: "Software Developer",
     link: "https://www.propelholdings.com/",
-    techStack: ["Java", "Spring Boot", "JDBC", "SQL", "Angular", "Tomcat"]
+    techStack: ["Java", "Spring Boot", "JDBC", "SQL", "Angular", "Tomcat"],
+    blog: {
+      type: 'content',
+      title: "My Journey at Propel Holdings",
+      content: `
+        <p>During my time at Propel Holdings, I had the opportunity to work on...</p>
+        <p>I utilized Java and Spring Boot to build robust backend services...</p>
+        <p>One of the key challenges I faced was optimization of SQL queries which led to a 30% improvement in response times.</p>
+      `
+    }
   },
   {
     icon: "/logos/tedx.svg",
@@ -13,7 +37,12 @@ export const experiences = [
     title: "TEDxUW",
     description: "Software Developer",
     link: "https://www.linkedin.com/company/tedxuw",
-    techStack: ["Next.js", "Typescript", "Tailwind CSS", "NeonDB", "PostgreSQL", "OAuth"]
+    techStack: ["Next.js", "Typescript", "Tailwind CSS", "NeonDB", "PostgreSQL", "OAuth"],
+    blog: {
+      type: 'link',
+      url: "https://medium.com/@yourusername/building-tedxuw-site",
+      title: "Building the TEDxUW Platform"
+    }
   },
   {
     icon: "/logos/dsc.svg",

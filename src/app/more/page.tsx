@@ -7,6 +7,12 @@ import SplitTextAnimated from "@/components/SplitTextAnimated";
 import sidequests from "../../data/sidequests";
 import { FiChevronDown } from "react-icons/fi";
 import Link from "next/link";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const intro = `welcome to a little collection of cool things I've been part of`;
 
@@ -20,11 +26,11 @@ type Sidequest = {
 };
 
 // --- Sidequest Block Component ---
-function SidequestBlock({ 
-  sq, 
-  spread 
-}: { 
-  sq: Sidequest; 
+function SidequestBlock({
+  sq,
+  spread
+}: {
+  sq: Sidequest;
   spread: string;
 }) {
   const blockRef = useRef<HTMLDivElement | null>(null);
@@ -76,7 +82,7 @@ function SidequestBlock({
           <span>{sq.place}</span>
         </div>
 
-        <h2 className="font-serif text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight md:leading-none">
+        <h2 className={`text-3xl md:text-4xl lg:text-6xl font-normal mb-4 md:mb-6 leading-tight md:leading-none ${playfair.className}`}>
           {sq.title.split("*").map((w: string, i: number) => (
             <span key={i} className="block">{w}</span>
           ))}
@@ -140,7 +146,7 @@ export default function More() {
       {/* --- Intro Section --- */}
       <section className="min-h-screen flex flex-col items-center justify-center px-4 md:px-10 relative text-white">
         <div className="flex flex-col items-center w-full -translate-y-4 md:-translate-y-8">
-          <h1 className="text-5xl md:text-6xl lg:text-8xl font-semibold mb-6 md:mb-8 text-center">
+          <h1 className={`text-5xl md:text-6xl lg:text-8xl font-normal mb-6 md:mb-8 text-center ${playfair.className}`}>
             <SplitTextAnimated text="more..." />
           </h1>
 

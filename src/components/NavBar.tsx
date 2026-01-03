@@ -4,6 +4,12 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -66,7 +72,7 @@ export default function NavBar() {
             <Link
               href="/more"
               ref={moreRef}
-              className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/more" ? "font-bold" : ""}`}
+              className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/more" ? "font-medium" : ""}`}
               onMouseEnter={() => setHoveredButton("more")}
               onMouseLeave={() => setHoveredButton(null)}
             >
@@ -86,7 +92,7 @@ export default function NavBar() {
               <Link
                 href="/"
                 ref={homeRef}
-                className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/" ? "font-bold" : ""}`}
+                className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/" ? "font-medium" : ""}`}
                 onMouseEnter={() => setHoveredButton("home")}
                 onMouseLeave={() => setHoveredButton(null)}
               >
@@ -107,13 +113,16 @@ export default function NavBar() {
               <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=next'>→</a>
             </div>
           </div>
-          
+
           <div className="flex justify-center relative z-50">
-            <Link href="/" className="text-white text-[2rem] font-bold font-serif hover:opacity-80 transition-opacity relative z-50">
+            <Link
+              href="/"
+              className={`text-white text-[2rem] font-medium hover:opacity-80 transition-opacity relative z-50 ${playfair.className}`}
+            >
               An Tran
             </Link>
           </div>
-          
+
           <div className="flex items-center justify-end gap-2">
             <a href="https://github.com/quynhan-tr" target="_blank" rel="noopener noreferrer" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
               GITHUB
@@ -129,11 +138,14 @@ export default function NavBar() {
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center justify-between px-5 pt-5">
-          <Link href="/" className="text-white text-xl font-bold font-serif leading-none">
+          <Link
+            href="/"
+            className={`text-white text-xl font-medium leading-none ${playfair.className}`}
+          >
             An Tran
           </Link>
-          
-          <button 
+
+          <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-white px-2 pb-2 z-60 relative flex items-center justify-center"
             aria-label="Toggle menu"
@@ -150,79 +162,77 @@ export default function NavBar() {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen 
-            ? 'opacity-100 visible' 
-            : 'opacity-0 invisible'
-        }`}
+      <div
+        className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ease-in-out ${isMobileMenuOpen
+          ? 'opacity-100 visible'
+          : 'opacity-0 invisible'
+          }`}
       >
         {/* Backdrop */}
-        <div 
+        <div
           className="absolute inset-0 bg-black/80 backdrop-blur-md"
           onClick={() => setIsMobileMenuOpen(false)}
         />
-        
+
         {/* Menu Content */}
-        <div 
-          className={`relative h-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out ${
-            isMobileMenuOpen 
-              ? 'scale-100 opacity-100' 
-              : 'scale-95 opacity-0'
-          }`}
+        <div
+          className={`relative h-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out ${isMobileMenuOpen
+            ? 'scale-100 opacity-100'
+            : 'scale-95 opacity-0'
+            }`}
         >
           {/* Navigation Links */}
           <div className="flex flex-col items-center gap-8 text-center">
-            <Link 
-              href="/more" 
-              className="text-white text-2xl font-serif hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
+            <Link
+              href="/more"
+              className="text-white text-2xl font-title hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               MORE
             </Link>
-            
+
             {isAboutPage ? (
-              <button 
-                onClick={() => scrollToSection('about')} 
-                className="text-white text-2xl font-serif hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
+              <button
+                onClick={() => scrollToSection('about')}
+                className="text-white text-2xl font-title hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
               >
                 ABOUT
               </button>
             ) : (
-              <Link 
-                href="/" 
-                className="text-white text-2xl font-serif hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
+              <Link
+                href="/"
+                className="text-white text-2xl font-title hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 ABOUT
               </Link>
             )}
-            
+
             {/* Divider */}
             <div className="w-24 h-px bg-white/30 my-4"></div>
-            
+
             {/* Social Links */}
             <div className="flex flex-col items-center gap-6">
-              <a 
-                href="https://github.com/quynhan-tr" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://github.com/quynhan-tr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white text-lg font-sans hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 GITHUB
               </a>
-              <a 
-                href="https://www.linkedin.com/in/quynhan05/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.linkedin.com/in/quynhan05/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white text-lg font-sans hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 LINKEDIN
               </a>
-              <a 
-                href="mailto:a37tran@uwaterloo.ca" 
+              <a
+                href="mailto:a37tran@uwaterloo.ca"
                 className="text-white text-lg font-sans hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

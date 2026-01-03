@@ -45,7 +45,7 @@ const EducationCard = ({
             />
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white leading-tight mb-1">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-white leading-tight mb-1">
               {school}
             </h3>
             <div className="text-sm md:text-base text-gray-300 font-normal mb-1">{major}</div>
@@ -68,7 +68,7 @@ const EducationCard = ({
               {techStack.map((tech, i) => (
                 <span
                   key={i}
-                  className="bg-black text-white px-3 md:px-4 py-1 rounded-full text-xs font-sans font-semibold"
+                  className="bg-black text-white px-3 md:px-4 py-1 rounded-full text-xs font-sans font-medium"
                 >
                   {tech}
                 </span>

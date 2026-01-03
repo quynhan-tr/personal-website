@@ -1,13 +1,19 @@
 import React from "react";
 import { projects } from "../data/projects";
 import { FiArrowRight } from "react-icons/fi";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export default function ProjectsSection() {
   return (
     <section id="projects" className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 md:pt-20 lg:pt-33 pb-16 md:pb-24 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
       {/* Heading on the left */}
       <div className="lg:w-1/3 w-full mb-6 lg:mb-0 lg:sticky lg:top-20 z-10">
-        <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-serif text-white leading-tight">
+        <h2 className={`text-3xl md:text-4xl lg:text-5xl text-white leading-tight font-normal ${playfair.className}`}>
           PROJECTS
         </h2>
       </div>
@@ -21,7 +27,7 @@ export default function ProjectsSection() {
             >
               {/* Mobile: Title and Arrow together */}
               <div className="flex items-center justify-between md:contents">
-                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white md:w-1/3 md:min-w-[120px]">
+                <span className="text-lg md:text-xl lg:text-2xl font-[family-name:var(--font-title)] text-white md:w-1/3 md:min-w-[120px]">
                   {project.title}
                 </span>
                 <a
@@ -34,13 +40,13 @@ export default function ProjectsSection() {
                   <FiArrowRight size={18} className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               </div>
-              
+
               {/* Tech Stack */}
               <div className="flex flex-wrap gap-2 md:gap-3 md:min-w-[175px] md:max-w-[350px] md:ml-8 lg:ml-35 md:order-2">
                 {project.techStack.map((tech, i) => (
                   <span
                     key={i}
-                    className="bg-black text-white px-3 md:px-4 py-1 rounded-full text-xs font-sans font-semibold"
+                    className="bg-black text-white px-3 md:px-4 py-1 rounded-full text-xs font-sans font-medium"
                   >
                     {tech}
                   </span>

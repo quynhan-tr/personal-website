@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #121416;
   --foreground: #ededed;
-  --font-serif: 'Playfair Display', serif;
+  --font-serif: var(--font-spectral), serif;
+  --font-title: var(--font-playfair), serif;
   --scroll-thumb: #23272b;
   --scroll-track: #18191a;
+}
+
+.font-title {
+  font-family: var(--font-title);
 }
 
 @layer utilities {
@@ -46,6 +50,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-serif);
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
 }
 
 html {
