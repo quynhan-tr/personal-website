@@ -55,7 +55,7 @@ export default function About() {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 md:mb-8">
           <SplitTextAnimated text="hello there!" />
         </h1>
-        <p className="text-base md:text-lg lg:text-xl text-gray-300 leading-6 md:leading-7 mb-6 md:mb-8 min-h-[6rem] md:min-h-[7.5rem]">
+        <p className="text-base md:text-lg lg:text-xl text-gray-300 leading-6 md:leading-7 mb-2 md:mb-4 min-h-[4rem] md:min-h-[5rem]">
           {intro.split('*').map((line, idx) => (
             <span key={idx} className="block">
               <SplitTextAnimated text={line.trim()} />
@@ -65,21 +65,21 @@ export default function About() {
         <div className="flex flex-wrap gap-3 md:gap-4 justify-center lg:justify-start">
           <a
             href="#experience"
-            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-sm md:text-base"
+            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-base md:text-lg"
             style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
           >
             experience
           </a>
           <a
             href="#projects"
-            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-sm md:text-base"
+            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-base md:text-lg"
             style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
             projects
           </a>
           <Link
             href="/more"
-            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-sm md:text-base"
+            className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-base md:text-lg"
             style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
           >
             more about me
