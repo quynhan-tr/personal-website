@@ -1,11 +1,11 @@
 export const experiences = [
   {
     icon: "/logos/propel.png",
-    bgImage: "/banners/tedx.png",
+    bgImage: "/banners/propelholdings.png",
     title: "Propel Holdings Inc",
     description: "Software Developer",
     link: "https://www.propelholdings.com/",
-    techStack: [ "Java", "Spring Boot", "JDBC", "SQL", "Angular", "Tomcat"]
+    techStack: ["Java", "Spring Boot", "JDBC", "SQL", "Angular", "Tomcat"]
   },
   {
     icon: "/logos/tedx.svg",
@@ -13,7 +13,7 @@ export const experiences = [
     title: "TEDxUW",
     description: "Software Developer",
     link: "https://www.linkedin.com/company/tedxuw",
-    techStack: [ "Next.js", "Typescript", "Tailwind CSS", "NeonDB", "PostgreSQL", "OAuth" ]
+    techStack: ["Next.js", "Typescript", "Tailwind CSS", "NeonDB", "PostgreSQL", "OAuth"]
   },
   {
     icon: "/logos/dsc.svg",
@@ -21,7 +21,7 @@ export const experiences = [
     title: "UW Data Science Club",
     description: "Software Developer",
     link: "https://www.uwdatascience.ca/",
-    techStack: [ "Next.js", "Typescript", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API", "Groq API"]
+    techStack: ["Next.js", "Typescript", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API", "Groq API"]
   },
   {
     icon: "/logos/csc.svg",
@@ -29,7 +29,7 @@ export const experiences = [
     title: "UW Computer Science Club",
     description: "Technical Organizer",
     link: "https://csclub.uwaterloo.ca/",
-    techStack: [ "Data Structures", "Algorithms", "Event Planning", "Leadership" ]
+    techStack: ["Data Structures", "Algorithms", "Event Planning", "Leadership"]
   },
   {
     icon: "/logos/alpha.png",
@@ -37,6 +37,6 @@ export const experiences = [
     title: "Alpha Coding",
     description: "Curriculum Developer & Instructor",
     link: "https://www.linkedin.com/company/alphacoding/posts/?feedView=all",
-    techStack: [ "Python", "Java", "API Integration", "AI Fundamentals", "Curriculum Design" ]
+    techStack: ["Python", "Java", "API Integration", "AI Fundamentals", "Curriculum Design"]
   }
 ];
