@@ -54,7 +54,7 @@ export default function ProjectsSection() {
                 <div className="p-0 flex flex-col">
                   {/* Title & Icons Row */}
                   <div className="p-6 md:p-8 flex items-center justify-between mb-0 h-[4.5rem] md:h-[5.5rem] transition-all duration-300">
-                    <h3 className="text-xl md:text-2xl text-white font-serif line-clamp-2">
+                    <h3 className="text-lg md:text-xl text-white font-serif line-clamp-2">
                       {project.title}
                     </h3>
 
