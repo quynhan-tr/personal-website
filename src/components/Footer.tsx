@@ -1,37 +1,35 @@
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+
 export default function Footer() {
   return (
-    <footer className="w-full mt-12 md:mt-16 lg:mt-20 pb-8 md:pb-10 px-4 md:px-8">
-      <div className="flex flex-col items-center justify-center gap-4 md:gap-5 max-w-4xl mx-auto">
-        <span className="text-sm md:text-md font-sans font-normal mt-6 md:mt-8 text-white uppercase tracking-wide text-center">
-          Get in touch
-        </span>
-
-        <div className="border border-dashed border-white/30 rounded-2xl px-4 md:px-6 pt-2 md:py-4 mb-1 md:mb-2 w-full max-w-md md:max-w-none md:w-auto">
-          <a
-            href="mailto:quynhanit@gmail.com"
-            className="text-lg md:text-xl lg:text-2xl font-[family-name:var(--font-title)] text-white tracking-wide block text-center break-all md:break-normal"
-            style={{ letterSpacing: "0.02em" }}
-          >
-            quynhanit@gmail.com
-          </a>
-        </div>
-
-        <div className="flex flex-row gap-3 md:gap-6 mt-1 md:mt-2 w-full sm:w-auto">
+    <footer className="w-full mt-24 md:mt-32 lg:mt-40 pb-8 md:pb-10 px-4 md:px-8">
+      <div className="flex flex-col items-center justify-center gap-6 max-w-4xl mx-auto">
+        <div className="w-24 h-[1px] bg-white/20"></div>
+        <div className="flex flex-row gap-6 md:gap-8 items-center justify-center">
           <a
             href="https://www.linkedin.com/in/quynhan05/"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-white rounded-full px-6 md:px-7 py-3 md:py-2 text-white font-sans text-xs hover:bg-white hover:text-black transition text-center min-h-[44px] flex items-center justify-center"
+            className="text-gray-400 hover:text-white transition-colors duration-200"
+            aria-label="LinkedIn"
           >
-            LINKEDIN
+            <FiLinkedin size={24} />
           </a>
           <a
             href="https://github.com/quynhan-tr"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-white rounded-full px-6 md:px-7 py-3 md:py-2 text-white font-sans text-xs hover:bg-white hover:text-black transition text-center min-h-[44px] flex items-center justify-center"
+            className="text-gray-400 hover:text-white transition-colors duration-200"
+            aria-label="GitHub"
           >
-            GITHUB
+            <FiGithub size={24} />
+          </a>
+          <a
+            href="mailto:quynhanit@gmail.com"
+            className="text-gray-400 hover:text-white transition-colors duration-200"
+            aria-label="Email"
+          >
+            <FiMail size={24} />
           </a>
         </div>
       </div>
