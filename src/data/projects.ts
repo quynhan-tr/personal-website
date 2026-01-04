@@ -50,7 +50,7 @@ export const projects: Project[] = [
   {
     title: "InSync",
     description: "Inspired by chromesthesia, where sound becomes color and motion, InSync reimagines music as something you can see, feel, and share.",
-    techStack: ["React", "Python", "Spotify Developer API"],
+    techStack: ["JavaScript", "React", "Python", "Spotify Developer API"],
     github: "https://github.com/RohanKatreddy/UofTHacks12",
     image: "/projects/insync.png",
   },
