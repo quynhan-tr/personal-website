@@ -1,6 +1,14 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isMorePage = pathname === '/more';
+
+  if (isMorePage) return null;
+
   return (
     <footer className="w-full mt-24 md:mt-32 lg:mt-40 pb-8 md:pb-10 px-4 md:px-8">
       <div className="flex flex-col items-center justify-center gap-6 max-w-4xl mx-auto">
