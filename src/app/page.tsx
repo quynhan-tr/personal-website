@@ -13,7 +13,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about">
         <About />
-        <Carousels />
+        {/* <Carousels /> */}
       </section>
 
       {/* Experience Section */}
