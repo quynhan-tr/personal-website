@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 export default function EducationSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <section id="education" className="max-w-7xl mx-auto px-4 lg:px-8 pb-10 md:pb-15 pt-20 md:pt-40 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+    <section id="education" className="max-w-7xl mx-auto px-4 lg:px-8 pb-10 md:pb-15 pt-12 md:pt-24 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
       {/* Heading on the left */}
       <div className="lg:w-1/3 w-full mb-6 lg:mb-0 lg:sticky lg:top-20 z-10">
         <h2 className={`text-3xl md:text-4xl lg:text-5xl text-white leading-tight font-normal ${playfair.className}`}>

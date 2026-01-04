@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 md:pt-20 lg:pt-33 pb-16 md:pb-24 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+    <section id="projects" className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 md:pt-20 lg:pt-33 pb-10 md:pb-16 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
       {/* Heading */}
       <div className="lg:w-1/3 w-full mb-6 lg:mb-0 lg:sticky lg:top-20 z-10">
         <h2 className={`text-3xl md:text-4xl lg:text-5xl text-white leading-tight font-normal ${playfair.className}`}>
