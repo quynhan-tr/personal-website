@@ -77,30 +77,6 @@ export default function More() {
     // Tiny timeout to ensure layout is ready
     setTimeout(initScroll, 0);
 
-    const handleWheel = (evt: WheelEvent) => {
-      // Only capture wheel if modal is NOT open, but we just check if no modal is rendered
-      // However, usually we can control this via pointer-events or state
-      // Since modal is an overlay, we might want to prevent this scroll logic if modal is open?
-      // Actually, if modal is open, this component might still be mounted. 
-      // Ideally we check a ref or state, but the useEffect closure might capture stale state 
-      // unless we include state in dependency.
-      // Easiest is to check if modal is open inside handler but we don't have easy access to updated state in this effect setup 
-      // without re-binding. 
-      // Let's just rely on the modal backdrop preventing events or `overscroll-none` on body if needed.
-      // But typically `evt.preventDefault()` on container might steal scroll from modal if not careful.
-      // BUT `handleWheel` is on WINDOW. Be careful.
-
-      // We can check if the target is within the modal.
-      const target = evt.target as HTMLElement;
-      if (target.closest('.fixed.inset-0.z-50')) {
-        // It's inside the modal, let it scroll naturally (don't prevent default)
-        return;
-      }
-
-      evt.preventDefault();
-      container.scrollLeft += evt.deltaY;
-    };
-
     const handleScroll = () => {
       const oneThird = container.scrollWidth / 3;
 
@@ -114,14 +90,10 @@ export default function More() {
       }
     };
 
-    // Attach wheel listener to WINDOW to capture scrolls everywhere (including over navbar)
-    // We must be careful not to block modal scrolling.
-    window.addEventListener("wheel", handleWheel, { passive: false });
     // Attach scroll listener to CONTAINER for infinite loop logic
     container.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("wheel", handleWheel);
       container.removeEventListener("scroll", handleScroll);
     };
   }, []);
