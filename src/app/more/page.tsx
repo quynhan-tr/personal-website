@@ -3,10 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
-import sidequests from "../../data/sidequests";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
 import GalleryModal from "@/components/GalleryModal";
-import { galleries } from "@/data/gallery";
+import { galleries, GalleryItem } from "@/data/gallery";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -16,18 +15,18 @@ const playfair = Playfair_Display({
 const intro = "a little collection of cool things I've been part of";
 
 interface SidequestCardProps {
-  sq: any;
+  item: GalleryItem;
   onOpen: (slug?: string) => void;
 }
 
-function SidequestCard({ sq, onOpen }: SidequestCardProps) {
+function SidequestCard({ item, onOpen }: SidequestCardProps) {
   return (
     <div className="relative group h-[400px] w-[300px] md:h-[500px] md:w-[400px] flex-shrink-0 overflow-hidden rounded-3xl bg-neutral-900 shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={sq.images[0]}
-          alt={sq.title}
+          src={item.banner}
+          alt={item.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110 opacity-60 group-hover:opacity-40"
         />
@@ -38,17 +37,17 @@ function SidequestCard({ sq, onOpen }: SidequestCardProps) {
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-8">
         <div className="flex items-center gap-2 text-[10px] md:text-xs font-semibold tracking-widest uppercase text-gray-300 mb-2">
-          <span>{sq.time}</span>
+          <span>{item.date}</span>
           <span className="text-sky-400">●</span>
-          <span>{sq.place}</span>
+          <span>{item.location}</span>
         </div>
 
         <h3 className={`${playfair.className} text-2xl md:text-4xl font-normal text-white mb-4 leading-tight`}>
-          {sq.title}
+          {item.title}
         </h3>
 
         <button
-          onClick={() => onOpen(sq.slug || "coming-soon")}
+          onClick={() => onOpen(item.slug)}
           className="w-max px-5 py-2 border border-white/30 rounded-full text-xs font-semibold tracking-widest text-white hover:bg-white hover:text-black hover:border-white transition-colors duration-300"
         >
           EXPLORE
@@ -61,7 +60,8 @@ function SidequestCard({ sq, onOpen }: SidequestCardProps) {
 export default function More() {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const pageRef = React.useRef<HTMLDivElement>(null);
-  const extendedSidequests = [...sidequests, ...sidequests, ...sidequests];
+  // triple the list for infinite scroll simulation
+  const extendedGalleries = [...galleries, ...galleries, ...galleries];
 
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
 
@@ -127,10 +127,10 @@ export default function More() {
         ref={containerRef}
         className="flex-1 w-full overflow-x-auto flex items-center gap-8 md:gap-12 px-2 no-scrollbar"
       >
-        {extendedSidequests.map((sq, idx) => (
+        {extendedGalleries.map((item, idx) => (
           <SidequestCard
-            key={`${idx}-${sq.title}`}
-            sq={sq}
+            key={`${idx}-${item.title}`}
+            item={item}
             onOpen={handleOpen}
           />
         ))}
