@@ -9,7 +9,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Jane Street Estimathon Portal",
+    title: "Estimathon Portal",
     description: "A comprehensive dashboard for the Jane Street Estimathon, featuring real-time data visualization, leaderboards, and analytics tools for participants.",
     techStack: ["HTML", "CSS", "JavaScript", "Google Apps Script"],
     link: "https://github.com/quynhan-tr/uw-estimathon",

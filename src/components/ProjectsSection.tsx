@@ -1,6 +1,6 @@
 import React from "react";
 import { projects } from "../data/projects";
-import { FiArrowRight, FiGithub, FiExternalLink } from "react-icons/fi";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { Playfair_Display } from "next/font/google";
 import Image from "next/image";
 
@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 md:pt-20 lg:pt-33 pb-10 md:pb-16 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+    <section id="projects" className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 md:pt-20 lg:pt-33 pb-10 md:pb-15 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
       {/* Heading */}
       <div className="lg:w-1/3 w-full mb-6 lg:mb-0 lg:sticky lg:top-20 z-10">
         <h2 className={`text-3xl md:text-4xl lg:text-5xl text-white leading-tight font-normal ${playfair.className}`}>
@@ -28,7 +28,7 @@ export default function ProjectsSection() {
               <div className="flex flex-col bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
                 <div className="relative w-full aspect-[16/9]"></div>
                 <div className="p-6 md:p-8 flex items-center justify-between h-[4.5rem] md:h-[5.5rem]">
-                  <h3 className={`text-xl md:text-2xl text-white font-[family-name:var(--font-title)] ${playfair.className} line-clamp-2`}>
+                  <h3 className="text-lg md:text-xl text-white font-serif font-bold line-clamp-2">
                     {project.title}
                   </h3>
                 </div>
@@ -54,7 +54,7 @@ export default function ProjectsSection() {
                 <div className="p-0 flex flex-col">
                   {/* Title & Icons Row */}
                   <div className="p-6 md:p-8 flex items-center justify-between mb-0 h-[4.5rem] md:h-[5.5rem] transition-all duration-300">
-                    <h3 className={`text-xl md:text-2xl text-white font-[family-name:var(--font-title)] ${playfair.className} line-clamp-2`}>
+                    <h3 className="text-xl md:text-2xl text-white font-serif line-clamp-2">
                       {project.title}
                     </h3>
 
