@@ -36,8 +36,8 @@ export default function ProjectsSection() {
             </div>
 
             {/* Actual Card (Absolute) */}
-            <div className="absolute inset-0 w-full h-max transition-all duration-300 ease-in-out group-hover:-translate-y-2 group-hover:shadow-2xl">
-              <div className="flex flex-col bg-[#18191b] border border-white/10 rounded-2xl overflow-hidden shadow-lg h-full">
+            <div className="absolute inset-0 w-full h-max transition-all duration-300 ease-in-out group-hover:-translate-y-2 group-hover:scale-110 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] group-hover:z-50">
+              <div className="flex flex-col bg-[#18191b] group-hover:bg-[#18191b]/95 group-hover:backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden shadow-lg h-full">
                 {/* Image Container */}
                 <div className="relative w-full aspect-[16/9] overflow-hidden">
                   <Image
