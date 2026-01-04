@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ExperienceCard from "./ExperienceBar";
-import { experiences, Experience } from "../data/experience";
-import BlogModal from "./BlogModal";
+import { experiences } from "../data/experience";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -11,14 +10,6 @@ const playfair = Playfair_Display({
 
 export default function ExperienceSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [selectedBlog, setSelectedBlog] = useState<{ title?: string; content?: string } | null>(null);
-
-  const handleOpenBlog = (blog: NonNullable<Experience['blog']>) => {
-    setSelectedBlog({
-      title: blog.title,
-      content: blog.content
-    });
-  };
 
   return (
     <section id="experience" className="max-w-7xl mx-auto px-4 lg:px-8 pb-10 md:pb-15 pt-20 md:pt-40 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
@@ -37,17 +28,9 @@ export default function ExperienceSection() {
             open={openIndex === idx}
             onOpen={() => setOpenIndex(idx)}
             onClose={() => setOpenIndex(null)}
-            onOpenBlog={handleOpenBlog}
           />
         ))}
       </div>
-
-      <BlogModal
-        isOpen={!!selectedBlog}
-        onClose={() => setSelectedBlog(null)}
-        title={selectedBlog?.title}
-        content={selectedBlog?.content}
-      />
     </section>
   );
 }

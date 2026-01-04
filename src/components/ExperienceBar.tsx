@@ -2,14 +2,13 @@
 import React from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaExternalLinkAlt, FaBookOpen } from "react-icons/fa";
+// import { FaExternalLinkAlt, FaBookOpen } from "react-icons/fa";
 import { Experience } from "../data/experience";
 
 interface ExperienceCardProps extends Experience {
   open: boolean;
   onOpen: () => void;
   onClose: () => void;
-  onOpenBlog?: (blog: NonNullable<Experience['blog']>) => void;
 }
 
 const ExperienceCard = ({
@@ -19,15 +18,15 @@ const ExperienceCard = ({
   description,
   link,
   techStack,
-  blog,
   open,
   onOpen,
   onClose,
-  onOpenBlog
 }: ExperienceCardProps) => (
-  <div
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
     className="block group relative"
-    tabIndex={0}
     onMouseEnter={onOpen}
     onMouseLeave={onClose}
   >
@@ -54,38 +53,6 @@ const ExperienceCard = ({
             {description}
           </p>
         </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col gap-2 shrink-0">
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center gap-2 group/btn"
-            title="Visit Company"
-          >
-            <FaExternalLinkAlt size={14} />
-            <span className="hidden md:block text-xs font-sans">Visit</span>
-          </a>
-
-          {blog && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                if (blog.type === 'link' && blog.url) {
-                  window.open(blog.url, '_blank');
-                } else if (blog.type === 'content' && onOpenBlog) {
-                  onOpenBlog(blog);
-                }
-              }}
-              className="p-2 text-gray-400 hover:text-blue-300 transition-colors bg-white/5 hover:bg-blue-500/10 rounded-lg flex items-center justify-center gap-2"
-              title={blog.title || "Read Blog"}
-            >
-              <FaBookOpen size={14} />
-              <span className="hidden md:block text-xs font-sans">Blog</span>
-            </button>
-          )}
-        </div>
       </div>
 
       {/* Tech Stack Dropdown (pushes content below) */}
@@ -99,7 +66,7 @@ const ExperienceCard = ({
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="w-full mt-4 relative z-40 pl-[calc(3rem+1rem)] md:pl-[calc(4rem+2rem)]"
           >
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 max-w-[80%]">
               {techStack.map((tech, i) => (
                 <span
                   key={i}
@@ -126,7 +93,7 @@ const ExperienceCard = ({
         />
       </div>
     </div>
-  </div>
+  </a>
 );
 
 export default ExperienceCard;

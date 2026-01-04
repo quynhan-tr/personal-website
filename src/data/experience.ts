@@ -5,12 +5,6 @@ export interface Experience {
   description: string;
   link: string;
   techStack: string[];
-  blog?: {
-    type: 'link' | 'content';
-    url?: string;
-    content?: string;
-    title?: string;
-  };
 }
 
 export const experiences: Experience[] = [
@@ -21,15 +15,6 @@ export const experiences: Experience[] = [
     description: "Software Developer",
     link: "https://www.propelholdings.com/",
     techStack: ["Java", "Spring Boot", "Angular", "TypeScript", "SQL", "RESTful API", "Google Web Toolkit", "JPA/Hibernate", "Mockito", "AWS"],
-    blog: {
-      type: 'content',
-      title: "My Journey at Propel Holdings",
-      content: `
-        <p>During my time at Propel Holdings, I had the opportunity to work on...</p>
-        <p>I utilized Java and Spring Boot to build robust backend services...</p>
-        <p>One of the key challenges I faced was optimization of SQL queries which led to a 30% improvement in response times.</p>
-      `
-    }
   },
   {
     icon: "/logos/dsc.svg",
@@ -38,15 +23,6 @@ export const experiences: Experience[] = [
     description: "Software Developer",
     link: "https://www.uwdatascience.ca/",
     techStack: ["Next.js", "React", "Typescript", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API"],
-    blog: {
-      type: 'content',
-      title: "My Journey at Propel Holdings",
-      content: `
-        <p>During my time at Propel Holdings, I had the opportunity to work on...</p>
-        <p>I utilized Java and Spring Boot to build robust backend services...</p>
-        <p>One of the key challenges I faced was optimization of SQL queries which led to a 30% improvement in response times.</p>
-      `
-    }
   },
   {
     icon: "/logos/tedx.svg",
