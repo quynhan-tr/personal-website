@@ -1,10 +1,11 @@
 "use client"
 
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -15,10 +16,6 @@ export default function NavBar() {
   const pathname = usePathname();
   const isAboutPage = pathname === '/about';
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [hoveredButton, setHoveredButton] = useState<"home" | "more" | null>(null);
-  const [highlightStyle, setHighlightStyle] = useState({});
-  const moreRef = useRef<HTMLAnchorElement | null>(null);
-  const homeRef = useRef<HTMLAnchorElement | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     if (isAboutPage) {
@@ -30,75 +27,35 @@ export default function NavBar() {
     setIsMobileMenuOpen(false); // Close mobile menu after click
   };
 
-  // Update highlight position/size
-  useLayoutEffect(() => {
-    let ref = null;
-    if ((pathname === "/more" && !hoveredButton) || hoveredButton === "more") {
-      ref = moreRef.current;
-    } else if ((pathname === "/" && !hoveredButton) || hoveredButton === "home") {
-      ref = homeRef.current;
-    }
-    if (ref) {
-      const rect = ref.getBoundingClientRect();
-      const parentRect = ref.parentElement!.getBoundingClientRect();
-      setHighlightStyle({
-        left: rect.left - parentRect.left,
-        top: rect.top - parentRect.top,
-        width: rect.width,
-        height: rect.height,
-        opacity: 1,
-      });
-    } else {
-      setHighlightStyle({ opacity: 0 });
-    }
-  }, [pathname, hoveredButton]);
-
   return (
     <>
       <nav className="sticky top-0 w-full z-60 bg-transparent backdrop-blur-sm transition-colors">
         {/* Desktop Navigation */}
         <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] items-center py-2 px-4 lg:px-8">
           <div className="flex items-center justify-start gap-4 relative">
-            {/* Sliding background */}
-            <span
-              className="absolute rounded-3xl bg-white/20 transition-all duration-300 ease-in-out pointer-events-none z-0"
-              style={{
-                position: "absolute",
-                ...highlightStyle,
-                transition: "all 0.3s cubic-bezier(0.4,0,0.2,1)",
-              }}
-            />
-            {/* MORE Button */}
+            <div className="flex items-center justify-start gap-6">
+              <a href="mailto:a37tran@uwaterloo.ca" className="text-white hover:text-gray-300 transition-colors" aria-label="Email">
+                <FiMail size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/quynhan05/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors" aria-label="LinkedIn">
+                <FiLinkedin size={20} />
+              </a>
+              <a href="https://github.com/quynhan-tr" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors" aria-label="GitHub">
+                <FiGithub size={20} />
+              </a>
+            </div>
+          </div>
+
+          <div className="flex justify-center relative z-50">
             <Link
-              href="/more"
-              ref={moreRef}
-              className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/more" ? "font-medium" : ""}`}
-              onMouseEnter={() => setHoveredButton("more")}
-              onMouseLeave={() => setHoveredButton(null)}
+              href="/"
+              className={`text-white text-[2rem] font-medium hover:opacity-80 transition-opacity relative z-50 ${playfair.className}`}
             >
-              MORE
+              An Tran
             </Link>
-            {/* HOME Button */}
-            {isAboutPage ? (
-              <button
-                onClick={() => scrollToSection('about')}
-                className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1`}
-                onMouseEnter={() => setHoveredButton("home")}
-                onMouseLeave={() => setHoveredButton(null)}
-              >
-                HOME
-              </button>
-            ) : (
-              <Link
-                href="/"
-                ref={homeRef}
-                className={`relative z-10 text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition flex items-center gap-1 ${pathname === "/" ? "font-medium" : ""}`}
-                onMouseEnter={() => setHoveredButton("home")}
-                onMouseLeave={() => setHoveredButton(null)}
-              >
-                HOME
-              </Link>
-            )}
+          </div>
+
+          <div className="flex items-center justify-end gap-6">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=prev'>←</a>
               <a href='https://cs.uwatering.com/#https://www.antran.dev/' target='_blank' rel="noopener noreferrer">
@@ -112,27 +69,6 @@ export default function NavBar() {
               </a>
               <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=next'>→</a>
             </div>
-          </div>
-
-          <div className="flex justify-center relative z-50">
-            <Link
-              href="/"
-              className={`text-white text-[2rem] font-medium hover:opacity-80 transition-opacity relative z-50 ${playfair.className}`}
-            >
-              An Tran
-            </Link>
-          </div>
-
-          <div className="flex items-center justify-end gap-2">
-            <a href="https://github.com/quynhan-tr" target="_blank" rel="noopener noreferrer" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
-              GITHUB
-            </a>
-            <a href="https://www.linkedin.com/in/quynhan05/" target="_blank" rel="noopener noreferrer" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
-              LINKEDIN
-            </a>
-            <a href="mailto:a37tran@uwaterloo.ca" className="text-white border border-white rounded-3xl px-4 py-1 text-xs font-sans bg-transparent transition hover:bg-white/10 flex items-center gap-1">
-              EMAIL
-            </a>
           </div>
         </div>
 
@@ -182,79 +118,74 @@ export default function NavBar() {
             }`}
         >
           {/* Navigation Links */}
-          <div className="flex flex-col items-center gap-8 text-center">
+          {isAboutPage ? (
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-white text-2xl font-title hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
+            >
+              ABOUT
+            </button>
+          ) : (
             <Link
-              href="/more"
+              href="/"
               className="text-white text-2xl font-title hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              MORE
+              ABOUT
             </Link>
+          )}
 
-            {isAboutPage ? (
-              <button
-                onClick={() => scrollToSection('about')}
-                className="text-white text-2xl font-title hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
-              >
-                ABOUT
-              </button>
-            ) : (
-              <Link
-                href="/"
-                className="text-white text-2xl font-title hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                ABOUT
-              </Link>
-            )}
+          {/* Divider */}
+          <div className="w-24 h-px bg-white/30 my-4"></div>
 
-            {/* Divider */}
-            <div className="w-24 h-px bg-white/30 my-4"></div>
+          {/* Social Links */}
+          <div className="flex flex-row items-center gap-6">
+            <a
+              href="https://github.com/quynhan-tr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="GitHub"
+            >
+              <FiGithub size={24} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/quynhan05/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="LinkedIn"
+            >
+              <FiLinkedin size={24} />
+            </a>
+            <a
+              href="mailto:a37tran@uwaterloo.ca"
+              className="text-white hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Email"
+            >
+              <FiMail size={24} />
+            </a>
 
-            {/* Social Links */}
-            <div className="flex flex-col items-center gap-6">
-              <a
-                href="https://github.com/quynhan-tr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-lg font-sans hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                GITHUB
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=prev'>←</a>
+              <a href='https://cs.uwatering.com/#https://www.antran.dev/' target='_blank' rel="noopener noreferrer">
+                <Image
+                  src='https://cs.uwatering.com/icon.white.svg'
+                  alt='CS Webring'
+                  width={24}
+                  height={24}
+                  style={{ width: '24px', height: 'auto', opacity: 0.8, margin: '0 auto' }}
+                />
               </a>
-              <a
-                href="https://www.linkedin.com/in/quynhan05/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-lg font-sans hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                LINKEDIN
-              </a>
-              <a
-                href="mailto:a37tran@uwaterloo.ca"
-                className="text-white text-lg font-sans hover:text-gray-300 transition-colors transform hover:scale-105 duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                EMAIL
-              </a>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=prev'>←</a>
-                <a href='https://cs.uwatering.com/#https://www.antran.dev/' target='_blank' rel="noopener noreferrer">
-                  <Image
-                    src='https://cs.uwatering.com/icon.white.svg'
-                    alt='CS Webring'
-                    width={24}
-                    height={24}
-                    style={{ width: '24px', height: 'auto', opacity: 0.8, margin: '0 auto' }}
-                  />
-                </a>
-                <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=next'>→</a>
-              </div>
+              <a href='https://cs.uwatering.com/#https://www.antran.dev/?nav=next'>→</a>
             </div>
           </div>
         </div>
       </div>
+
     </>
   );
 }
