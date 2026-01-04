@@ -10,7 +10,7 @@ export default function Footer() {
   if (isMorePage) return null;
 
   return (
-    <footer className="w-full mt-24 md:mt-32 lg:mt-40 pb-8 md:pb-10 px-4 md:px-8">
+    <footer className="w-full mt-12 md:mt-20 lg:mt-24 pb-8 md:pb-10 px-4 md:px-8">
       <div className="flex flex-col items-center justify-center gap-6 max-w-4xl mx-auto">
         <div className="w-24 h-[1px] bg-white/20"></div>
         <div className="flex flex-row gap-6 md:gap-8 items-center justify-center">

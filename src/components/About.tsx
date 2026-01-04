@@ -30,7 +30,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="text-white px-4 md:px-8 lg:px-10 py-16 md:py-24 lg:py-30 flex flex-col lg:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-20">
+    <section id="about" className="text-white px-4 md:px-8 lg:px-10 py-16 md:py-20 lg:py-24 flex flex-col lg:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-20">
       <div
         className="w-full max-w-xs md:max-w-sm"
         ref={imgRef}
