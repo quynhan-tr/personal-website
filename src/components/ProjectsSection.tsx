@@ -59,7 +59,7 @@ export default function ProjectsSection() {
                     </h3>
 
                     {/* Icons (Hidden default, Show on hover) */}
-                    <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+                    <div className="flex gap-3">
                       {project.github && (
                         <a
                           href={project.github}
@@ -71,15 +71,17 @@ export default function ProjectsSection() {
                           <FiGithub size={20} />
                         </a>
                       )}
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white/70 hover:text-white transition-colors"
-                        aria-label={`Visit ${project.title}`}
-                      >
-                        <FiExternalLink size={20} />
-                      </a>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white/70 hover:text-white transition-colors"
+                          aria-label={`Visit ${project.title}`}
+                        >
+                          <FiExternalLink size={20} />
+                        </a>
+                      )}
                     </div>
                   </div>
 
