@@ -32,6 +32,19 @@ export default function ProjectsSection() {
                     {project.title}
                   </h3>
                 </div>
+                {/* Tech Stack Spacer */}
+                <div className="px-6 md:px-8 pb-6">
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="bg-white/10 text-white/90 px-3 py-1 rounded-full text-xs font-sans font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -58,7 +71,7 @@ export default function ProjectsSection() {
                       {project.title}
                     </h3>
 
-                    {/* Icons (Hidden default, Show on hover) */}
+                    {/* Icons (Always visible) */}
                     <div className="flex gap-3">
                       {project.github && (
                         <a
@@ -85,23 +98,28 @@ export default function ProjectsSection() {
                     </div>
                   </div>
 
-                  {/* Expandable Content (Description + Tech Stack) */}
+                  {/* Tech Stack (Always Visible) */}
+                  <div className="px-6 md:px-8 pb-6">
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="bg-white/10 text-white/90 px-3 py-1 rounded-full text-xs font-sans font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Expandable Content (Description) */}
                   <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
                     <div className="overflow-hidden px-6 md:px-8 pb-0 group-hover:pb-8 transition-all duration-300">
-                      <p className="text-white/70 text-sm md:text-base leading-relaxed mb-6">
+                      <p className="text-white/70 text-sm md:text-base leading-relaxed">
                         {project.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2">
-                        {project.techStack.map((tech, i) => (
-                          <span
-                            key={i}
-                            className="bg-white/10 text-white/90 px-3 py-1 rounded-full text-xs font-sans font-medium"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+
                     </div>
                   </div>
                 </div>

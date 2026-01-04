@@ -11,7 +11,7 @@ export const projects: Project[] = [
   {
     title: "MotionWave",
     description: "Control the rhythm with your hands. Powered by a machine learning neural network for real-time harmony generation.",
-    techStack: ["Next.js", "React", "TypeScript", "MediaPipe Hands", "Web Audio API", "Web Workers"],
+    techStack: ["Next.js", "React", "TypeScript", "MediaPipe Hands", "Web Workers"],
     link: "https://techto25.vercel.app/",
     github: "https://github.com/quynhan-tr/MotionWave",
     image: "/projects/motionWave.png",
