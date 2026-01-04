@@ -9,12 +9,36 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Notation",
+    description: "A comprehensive dashboard for the Jane Street Estimathon, featuring real-time data visualization, leaderboards, and analytics tools for participants.",
+    techStack: ["HTML", "CSS", "JavaScript", "Google Apps Script"],
+    link: "https://github.com/quynhan-tr/notation",
+    github: "https://github.com/quynhan-tr/notation",
+    image: "/projects/notation.png",
+  },
+  {
+    title: "MotionWave",
+    description: "A comprehensive dashboard for the Jane Street Estimathon, featuring real-time data visualization, leaderboards, and analytics tools for participants.",
+    techStack: ["HTML", "CSS", "JavaScript", "Google Apps Script"],
+    link: "https://github.com/quynhan-tr/motionwave",
+    github: "https://github.com/quynhan-tr/motionwave",
+    image: "/projects/motionwave.png",
+  },
+  {
     title: "Jane Street Estimathon Portal",
     description: "A comprehensive dashboard for the Jane Street Estimathon, featuring real-time data visualization, leaderboards, and analytics tools for participants.",
     techStack: ["HTML", "CSS", "JavaScript", "Google Apps Script"],
     link: "https://github.com/quynhan-tr/uw-estimathon",
     github: "https://github.com/quynhan-tr/uw-estimathon",
     image: "/projects/estimathon.png",
+  },
+  {
+    title: "Speed-Friending",
+    description: "A comprehensive dashboard for the Jane Street Estimathon, featuring real-time data visualization, leaderboards, and analytics tools for participants.",
+    techStack: ["HTML", "CSS", "JavaScript", "Google Apps Script"],
+    link: "https://github.com/quynhan-tr/speed-friending",
+    github: "https://github.com/quynhan-tr/speed-friending",
+    image: "/projects/speed_friending.png",
   },
   {
     title: "UW Love Flow",
@@ -31,13 +55,5 @@ export const projects: Project[] = [
     link: "https://github.com/RohanKatreddy/UofTHacks12",
     github: "https://github.com/RohanKatreddy/UofTHacks12",
     image: "/projects/insync.png",
-  },
-  {
-    title: "My Portfolio",
-    description: "My personal digital garden showcased with a minimalist aesthetic, featuring dynamic animations, smooth transitions, and a responsive design.",
-    techStack: ["React", "TypeScript", "TailwindCSS"],
-    link: "https://antran.vercel.app/",
-    github: "https://github.com/quynhan-tr/personal-website",
-    image: "/projects/portfolio.png",
   },
 ];
