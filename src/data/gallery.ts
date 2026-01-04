@@ -78,5 +78,14 @@ export const galleries: GalleryItem[] = [
     ],
     date: "Sep 2022",
     location: "Waterloo, ON"
+  },
+  {
+    slug: "coming-soon",
+    title: "Coming soon",
+    banner: "/images/2.JPG",
+    description: "More exciting projects and adventures are on the way. Stay tuned!",
+    photos: [],
+    date: "Sep 2022",
+    location: "Canada"
   }
 ];
