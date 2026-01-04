@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import Carousels from '../components/Carousels';
+
 import About from '../components/About';
 import ExperienceSection from "../components/ExperienceSection";
 import ProjectsSection from "../components/ProjectsSection";
