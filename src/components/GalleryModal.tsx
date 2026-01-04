@@ -132,7 +132,7 @@ export default function GalleryModal({ isOpen, onClose, gallery }: GalleryModalP
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity"
+                        className="fixed inset-0 bg-black/60 z-40 transition-opacity"
                     />
 
                     {/* Modal Container */}
@@ -143,7 +143,7 @@ export default function GalleryModal({ isOpen, onClose, gallery }: GalleryModalP
                         className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
                     >
                         <div
-                            className="bg-[#121416] border border-white/10 rounded-2xl w-full max-w-[95vw] h-[90vh] overflow-hidden flex flex-col shadow-2xl pointer-events-auto relative"
+                            className="bg-[#121416] border border-white/10 rounded-2xl w-full max-w-[90vw] h-[80vh] overflow-hidden flex flex-col shadow-2xl pointer-events-auto relative"
                         >
                             {/* Close Button */}
                             <button
@@ -154,158 +154,148 @@ export default function GalleryModal({ isOpen, onClose, gallery }: GalleryModalP
                                 <IoClose size={24} />
                             </button>
 
-                            {/* Scrollable Content */}
-                            <div
-                                ref={scrollContainerRef}
-                                className="flex-1 overflow-y-auto custom-scrollbar relative"
-                            >
-                                {/* Banner Header */}
-                                <div ref={headerRef} className="relative w-full h-[50vh] min-h-[300px] overflow-hidden shrink-0">
-                                    <Image
-                                        src={gallery.banner}
-                                        alt={gallery.title}
-                                        fill
-                                        className="object-cover object-center"
-                                        priority
-                                    />
-                                    {/* overlays */}
-                                    <div className="absolute inset-0 bg-black/20" />
-                                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#121416]" />
+                            {/* Split Layout Container */}
+                            <div className="flex flex-col lg:flex-row w-full h-full overflow-hidden">
 
-                                    {/* Text Content */}
-                                    <div className="absolute inset-0 flex flex-col items-end justify-end text-right px-8 pb-8">
-                                        <h1 className="text-3xl md:text-5xl font-serif font-bold mb-2 tracking-tight drop-shadow-lg text-white">
+                                {/* Left Column: Text Content */}
+                                <div className="w-full lg:w-[40%] flex flex-col p-8 lg:p-12 overflow-y-auto custom-scrollbar shrink-0">
+                                    <div className="flex flex-col items-start text-left mb-8">
+                                        <h1 className="text-3xl md:text-5xl font-serif font-bold mb-4 tracking-tight text-white">
                                             {gallery.title}
                                         </h1>
-                                        <div className="uppercase tracking-widest text-xs md:text-sm font-semibold text-gray-200">
-                                            {date} <span className="mx-2">▶</span> {location}
+                                        <div className="uppercase tracking-widest text-xs md:text-sm font-semibold text-gray-400 mb-6">
+                                            {date} <span className="mx-2 text-white/30">|</span> {location}
+                                        </div>
+
+                                        <div className="text-base md:text-lg text-gray-300 font-serif leading-relaxed">
+                                            {gallery.slug === 'we-do-wonder' ? (() => {
+                                                const desc = gallery.description;
+                                                const linkText = "We Do Wonder";
+                                                const linkIndex = desc.indexOf(linkText);
+                                                if (linkIndex === -1) return <SplitTextAnimated text={desc} />;
+                                                return (
+                                                    <span className="inline">
+                                                        <SplitTextAnimated text={desc.slice(0, linkIndex)} />
+                                                        <a
+                                                            href="https://www.facebook.com/wedowonder"
+                                                            className="underline text-sky-300 hover:text-sky-400"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            <SplitTextAnimated text={linkText} />
+                                                        </a>
+                                                        <SplitTextAnimated text={desc.slice(linkIndex + linkText.length)} />
+                                                    </span>
+                                                );
+                                            })() : gallery.slug === 'jamhacks' ? (() => {
+                                                const desc = gallery.description;
+                                                const linkText = "JAMHacks";
+                                                const linkIndex = desc.indexOf(linkText);
+                                                if (linkIndex === -1) return <SplitTextAnimated text={desc} />;
+                                                return (
+                                                    <span className="inline">
+                                                        <SplitTextAnimated text={desc.slice(0, linkIndex)} />
+                                                        <a
+                                                            href="https://www.jamhacks.ca/"
+                                                            className="underline text-sky-300 hover:text-sky-400"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            <SplitTextAnimated text={linkText} />
+                                                        </a>
+                                                        <SplitTextAnimated text={desc.slice(linkIndex + linkText.length)} />
+                                                    </span>
+                                                );
+                                            })() : (
+                                                <SplitTextAnimated text={gallery.description} />
+                                            )}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="w-full flex justify-center mt-8 px-4">
-                                    <div className="max-w-4xl text-center text-md md:text-lg text-gray-200 font-serif">
-                                        {gallery.slug === 'we-do-wonder' ? (() => {
-                                            const desc = gallery.description;
-                                            const linkText = "We Do Wonder";
-                                            const linkIndex = desc.indexOf(linkText);
-                                            if (linkIndex === -1) return <SplitTextAnimated text={desc} />;
-                                            return (
-                                                <span className="inline">
-                                                    <SplitTextAnimated text={desc.slice(0, linkIndex)} />
-                                                    <a
-                                                        href="https://www.facebook.com/wedowonder"
-                                                        className="underline text-sky-300 hover:text-sky-400"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
+                                {/* Right Column: Photos */}
+                                <div
+                                    ref={scrollContainerRef}
+                                    className="flex-1 overflow-y-auto custom-scrollbar relative"
+                                >
+                                    {/* Mobile Grid Gallery */}
+                                    <div className="block lg:hidden w-full px-4 mt-8 pb-10">
+                                        <div className="grid grid-cols-2 gap-2">
+                                            {gallery.photos.map((photo, idx) => (
+                                                <button
+                                                    key={idx}
+                                                    className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#181a1b]"
+                                                    onClick={() => setModalImg(photo)}
+                                                    aria-label={`View image ${idx + 1}`}
+                                                >
+                                                    <Image
+                                                        src={photo}
+                                                        alt={`Gallery photo ${idx + 1}`}
+                                                        width={800}
+                                                        height={600}
+                                                        className="object-cover w-full h-full"
+                                                    />
+                                                </button>
+                                            ))}
+                                        </div>
+                                        {/* Inner Modal for Mobile Image View */}
+                                        {modalImg && (
+                                            <div
+                                                className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+                                                onClick={(e) => { e.stopPropagation(); setModalImg(null); }}
+                                            >
+                                                <div className="relative max-w-[95vw] max-h-[80vh]">
+                                                    <Image
+                                                        src={modalImg}
+                                                        alt="Enlarged gallery photo"
+                                                        width={1200}
+                                                        height={900}
+                                                        className="object-contain w-full h-full rounded-lg"
+                                                    />
+                                                    <button
+                                                        className="absolute -top-10 right-0 text-white p-2"
+                                                        onClick={(e) => { e.stopPropagation(); setModalImg(null); }}
                                                     >
-                                                        <SplitTextAnimated text={linkText} />
-                                                    </a>
-                                                    <SplitTextAnimated text={desc.slice(linkIndex + linkText.length)} />
-                                                </span>
-                                            );
-                                        })() : gallery.slug === 'jamhacks' ? (() => {
-                                            const desc = gallery.description;
-                                            const linkText = "JAMHacks";
-                                            const linkIndex = desc.indexOf(linkText);
-                                            if (linkIndex === -1) return <SplitTextAnimated text={desc} />;
-                                            return (
-                                                <span className="inline">
-                                                    <SplitTextAnimated text={desc.slice(0, linkIndex)} />
-                                                    <a
-                                                        href="https://www.jamhacks.ca/"
-                                                        className="underline text-sky-300 hover:text-sky-400"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <SplitTextAnimated text={linkText} />
-                                                    </a>
-                                                    <SplitTextAnimated text={desc.slice(linkIndex + linkText.length)} />
-                                                </span>
-                                            );
-                                        })() : (
-                                            <SplitTextAnimated text={gallery.description} />
+                                                        Close
+                                                    </button>
+                                                </div>
+                                            </div>
                                         )}
                                     </div>
-                                </div>
 
-                                {/* Mobile Grid Gallery */}
-                                <div className="block lg:hidden w-full px-4 mt-8 pb-10">
-                                    <div className="grid grid-cols-2 gap-2">
-                                        {gallery.photos.map((photo, idx) => (
-                                            <button
-                                                key={idx}
-                                                className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#181a1b]"
-                                                onClick={() => setModalImg(photo)}
-                                                aria-label={`View image ${idx + 1}`}
-                                            >
-                                                <Image
-                                                    src={photo}
-                                                    alt={`Gallery photo ${idx + 1}`}
-                                                    width={800}
-                                                    height={600}
-                                                    className="object-cover w-full h-full"
-                                                />
-                                            </button>
-                                        ))}
-                                    </div>
-                                    {/* Inner Modal for Mobile Image View */}
-                                    {modalImg && (
-                                        <div
-                                            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-sm"
-                                            onClick={(e) => { e.stopPropagation(); setModalImg(null); }}
-                                        >
-                                            <div className="relative max-w-[95vw] max-h-[80vh]">
-                                                <Image
-                                                    src={modalImg}
-                                                    alt="Enlarged gallery photo"
-                                                    width={1200}
-                                                    height={900}
-                                                    className="object-contain w-full h-full rounded-lg"
-                                                />
-                                                <button
-                                                    className="absolute -top-10 right-0 text-white p-2"
-                                                    onClick={(e) => { e.stopPropagation(); setModalImg(null); }}
+                                    {/* Desktop Scrollable Gallery */}
+                                    <div className="hidden lg:flex flex-col items-center w-full py-12 px-6">
+                                        {gallery.photos.map((photo, index) => {
+                                            const shifts = [
+                                                "-translate-x-8", "translate-x-8", "translate-x-0", "-translate-x-4", "translate-x-4"
+                                            ];
+                                            const shift = shifts[index % shifts.length];
+                                            const overlap = index === 0 ? "mt-0" : "-mt-12";
+                                            const rotate = index % 3 === 0 ? "-rotate-1" : index % 3 === 1 ? "rotate-1" : "";
+                                            // Adjusted sizes for modal width
+                                            const size = index % 4 === 0 ? "max-w-[90%]" : "max-w-[75%]";
+
+                                            return (
+                                                <motion.div
+                                                    key={index}
+                                                    ref={el => { imageRefs.current[index] = el; }}
+                                                    className={`w-full ${size} rounded-xl overflow-hidden shadow-2xl mb-8 ${shift} ${overlap} ${rotate} relative z-10 group bg-[#181a1b]`}
+                                                    initial={{ opacity: 0, y: 40 }}
+                                                    whileInView={{ opacity: 1, y: 0 }}
+                                                    viewport={{ root: scrollContainerRef, once: true, margin: "-10%" }}
+                                                    transition={{ duration: 0.4 }}
                                                 >
-                                                    Close
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Desktop Scrollable Gallery */}
-                                <div className="hidden lg:flex flex-col items-center w-full mt-12 pb-20">
-                                    {gallery.photos.map((photo, index) => {
-                                        const shifts = [
-                                            "-translate-x-8", "translate-x-8", "translate-x-0", "-translate-x-4", "translate-x-4"
-                                        ];
-                                        const shift = shifts[index % shifts.length];
-                                        const overlap = index === 0 ? "mt-0" : "-mt-12";
-                                        const rotate = index % 3 === 0 ? "-rotate-1" : index % 3 === 1 ? "rotate-1" : "";
-                                        // Adjusted sizes for modal width
-                                        const size = index % 4 === 0 ? "max-w-[80%]" : "max-w-[60%]";
-
-                                        return (
-                                            <motion.div
-                                                key={index}
-                                                ref={el => { imageRefs.current[index] = el; }}
-                                                className={`w-full ${size} rounded-xl overflow-hidden shadow-2xl mb-8 ${shift} ${overlap} ${rotate} relative z-10 group bg-[#181a1b]`}
-                                                initial={{ opacity: 0, y: 40 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                viewport={{ root: scrollContainerRef, once: true, margin: "-10%" }}
-                                                transition={{ duration: 0.4 }}
-                                            >
-                                                <Image
-                                                    src={photo}
-                                                    alt={`${gallery.title} photo ${index + 1}`}
-                                                    width={1200}
-                                                    height={800}
-                                                    className="object-cover w-full h-auto"
-                                                />
-                                            </motion.div>
-                                        );
-                                    })}
+                                                    <Image
+                                                        src={photo}
+                                                        alt={`${gallery.title} photo ${index + 1}`}
+                                                        width={1200}
+                                                        height={800}
+                                                        className="object-cover w-full h-auto"
+                                                    />
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
                             </div>
 
