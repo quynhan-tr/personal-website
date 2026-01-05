@@ -13,7 +13,12 @@ export const galleries: GalleryItem[] = [
     slug: "we-do-wonder",
     title: "We Do Wonder",
     banner: "/galleryImages/wdw/home4(1).jpg",
-    description: "In 2021, I co-founded We Do Wonder - a non-profit that began by offering free English classes to children in Vietnam. Since then, we've expanded our efforts to include creating spaces for youth around the world to connect, fundraising for foster homes, and supporting underprivileged communities. What started as a small community project has grown into a platform for creativity, cultural exchange, and meaningful impact.",
+    description: `In 2021, I co-founded We Do Wonder - a non-profit that aim to inspire change in Vietnam through Education and Community. * We spent the first 3 months building our branding through social media posts with learning materials, podcasts, and reaching out to other NPO to help with marketing. With a team of 20 members, we were able to reach over 100000 users, with 1000 consistent followers. *  With a better publicity, we announced our first program called “The Wonder”.  We ran 6 English classes with the help of 12 volunteers for 40 students. The classes were a hit. We continue on with our initiatives and programs:
+- Fundraiser: through bake sale, and raising money from The Wonder English classes
+- Wonderland: a donation trip to Danang Street Children Program Center, and gifts distribution to local workers
+- Wonderlink: an online event series with workshops, and networking sessions for youth from all over the world
+- We Do Wonder: English communication bootcamp, Leadership and Mental Health training for all our members and volunteers 
+* Countless unforgettable memories were made: late night lessons filled with laughter, cruising on my teammate’s motorcycle around the city to deliver bake sale products, playing nostalgic childhood games with children at the Center, and many many more. We Do Wonder means a lot to me. Forever thankful for the amazing people that helped make this possible!`,
     photos: [
       "/galleryImages/wdw/home4(2).jpg",
       "/galleryImages/wdw/home4(3).jpg",
@@ -37,7 +42,7 @@ export const galleries: GalleryItem[] = [
     slug: "mll-leadership-club",
     title: "MLL Leadership Club",
     banner: "/galleryImages/mll/2.jpg",
-    description: "At Alexander Mackenzie High School, I led the MLL (Multilingual Language Learners) Leadership Club, where I organized two annual Cultural Fairs to celebrate the diverse backgrounds of our student community through food, performances, and cultural showcases. Hoping to share the impact more widely, I reached out to the school board—and the initiative was approved to grow beyond our school, opening up opportunities for more students across the district to get involved.",
+    description: "In my 2 years in high school in Canada after transferring from Vietnam, I co-founded the MLL (Multilingual Language Learners) Leadership Club. We organized many fun things including the two main annual Cultural Fairs. * For the first iteration of the Cultural Fair, being fresh back from Covid made hosting a large scale in person event faced many restrictions, and doubts about participation turn out. With 3 months from the first meeting to the event date, we were able to secure school funding, recruit 40+ volunteers, plan and rehearse all displays and performances. * The event turned out amazing. Students, teachers, staffs. Everyone were enjoying themselves, dancing, talking, sharing their display, their culture. * The club is now led by a new team and has now grown to 100+ members, organized 2 more annual Cultural Fairs.",
     photos: [
       "/galleryImages/mll/1.JPG",
       "/galleryImages/mll/2.JPG",
@@ -61,7 +66,7 @@ export const galleries: GalleryItem[] = [
     slug: "jamhacks",
     title: "JAMHacks",
     banner: "/galleryImages/jamhacks/1.JPG",
-    description: "I started my journey with JAMHacks as a participant at JAMHacks 7, and discovered how exciting it could be to build something from scratch. Since then, I’ve had the chance to return as an organizer for Canada’s largest in-person high school hackathon. Being part of the team behind the scenes has been incredibly rewarding—JAMHacks has such a supportive, inspiring community, and I’m grateful to help create that experience for others just starting out like I once did.",
+    description: "I was a hacker at JAMHacks 7, my first ever hackathon. * I like to say that this is where my journey with building begins. I loved it there, the innovative, stressful but somehow chill environment. Wanted to be more involved with this community, I joined the organizing team for the following iteration. * Being part of the team was the highlight of my high school time. After many months of online meetings, and many many Google Sheets, JAMHacks 8 finally came to life in June 2024 at E7 UWaterloo. * Not having to lock in for hacking, organizers were up to many things including organizing :), building a boat for a physics project, leetcoding, sleeping, and cooking 100+ ramen servings with 1 kettle (that was very smart of us). * There are many thanks I want to give to JAMHacks, to hackers, to  organizers, and everyone I met through this hackathon. * All in all, 10/10 experience, would recommend to any student.",
     photos: [
       "/galleryImages/jamhacks/1.JPG",
       "/galleryImages/jamhacks/4.JPG",

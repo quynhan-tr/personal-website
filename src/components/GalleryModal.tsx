@@ -3,9 +3,15 @@
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { Playfair_Display } from "next/font/google";
 import { IoClose } from "react-icons/io5";
-import SplitTextAnimated from "@/components/SplitTextAnimated";
+
 import { GalleryItem } from "@/data/gallery";
+
+const playfair = Playfair_Display({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+});
 
 interface GalleryModalProps {
     isOpen: boolean;
@@ -159,58 +165,69 @@ export default function GalleryModal({ isOpen, onClose, gallery }: GalleryModalP
 
                                 {/* Left Column: Text Content */}
                                 <div className="w-full lg:w-[40%] flex flex-col p-8 lg:p-12 overflow-y-auto custom-scrollbar shrink-0">
-                                    <div className="flex flex-col items-start text-left mb-8">
-                                        <h1 className="text-3xl md:text-5xl font-serif font-bold mb-4 tracking-tight text-white">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: 0.2 }}
+                                        className="flex flex-col items-start text-left mb-8"
+                                    >
+                                        <h1 className={`text-3xl md:text-5xl mb-4 tracking-tight text-white ${playfair.className}`}>
                                             {gallery.title}
                                         </h1>
                                         <div className="uppercase tracking-widest text-xs md:text-sm font-semibold text-gray-400 mb-6">
                                             {date} <span className="mx-2 text-white/30">|</span> {location}
                                         </div>
 
-                                        <div className="text-base md:text-lg text-gray-300 font-serif leading-relaxed">
-                                            {gallery.slug === 'we-do-wonder' ? (() => {
-                                                const desc = gallery.description;
-                                                const linkText = "We Do Wonder";
-                                                const linkIndex = desc.indexOf(linkText);
-                                                if (linkIndex === -1) return <SplitTextAnimated text={desc} />;
-                                                return (
-                                                    <span className="inline">
-                                                        <SplitTextAnimated text={desc.slice(0, linkIndex)} />
-                                                        <a
-                                                            href="https://www.facebook.com/wedowonder"
-                                                            className="underline text-sky-300 hover:text-sky-400"
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                        >
-                                                            <SplitTextAnimated text={linkText} />
-                                                        </a>
-                                                        <SplitTextAnimated text={desc.slice(linkIndex + linkText.length)} />
-                                                    </span>
-                                                );
-                                            })() : gallery.slug === 'jamhacks' ? (() => {
-                                                const desc = gallery.description;
-                                                const linkText = "JAMHacks";
-                                                const linkIndex = desc.indexOf(linkText);
-                                                if (linkIndex === -1) return <SplitTextAnimated text={desc} />;
-                                                return (
-                                                    <span className="inline">
-                                                        <SplitTextAnimated text={desc.slice(0, linkIndex)} />
-                                                        <a
-                                                            href="https://www.jamhacks.ca/"
-                                                            className="underline text-sky-300 hover:text-sky-400"
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                        >
-                                                            <SplitTextAnimated text={linkText} />
-                                                        </a>
-                                                        <SplitTextAnimated text={desc.slice(linkIndex + linkText.length)} />
-                                                    </span>
-                                                );
-                                            })() : (
-                                                <SplitTextAnimated text={gallery.description} />
-                                            )}
+                                        <div className="text-sm md:text-base text-gray-300 font-serif leading-relaxed whitespace-pre-wrap">
+                                            {(() => {
+                                                const renderDescription = (text: string, linkText?: string, linkUrl?: string) => {
+                                                    let isLinked = false;
+                                                    return text.split('*').map((part, index) => {
+                                                        const trimmedPart = part.trim();
+                                                        if (!trimmedPart) return null;
+
+                                                        const content = (() => {
+                                                            if (!linkText || !linkUrl || isLinked || !trimmedPart.includes(linkText)) return trimmedPart;
+
+                                                            const linkIndex = trimmedPart.indexOf(linkText);
+                                                            if (linkIndex === -1) return trimmedPart;
+
+                                                            isLinked = true;
+
+                                                            return (
+                                                                <React.Fragment>
+                                                                    {trimmedPart.slice(0, linkIndex)}
+                                                                    <a
+                                                                        href={linkUrl}
+                                                                        className="underline text-sky-300 hover:text-sky-400"
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                    >
+                                                                        {linkText}
+                                                                    </a>
+                                                                    {trimmedPart.slice(linkIndex + linkText.length)}
+                                                                </React.Fragment>
+                                                            );
+                                                        })();
+
+                                                        return (
+                                                            <div key={index} className="mb-8 last:mb-0 min-h-[1.25em]">
+                                                                {content}
+                                                            </div>
+                                                        );
+                                                    });
+                                                };
+
+                                                if (gallery.slug === 'we-do-wonder') {
+                                                    return renderDescription(gallery.description, "We Do Wonder", "https://www.facebook.com/wedowonder");
+                                                } else if (gallery.slug === 'jamhacks') {
+                                                    return renderDescription(gallery.description, "JAMHacks", "https://www.jamhacks.ca/");
+                                                } else {
+                                                    return renderDescription(gallery.description);
+                                                }
+                                            })()}
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 </div>
 
                                 {/* Right Column: Photos */}
@@ -334,7 +351,8 @@ export default function GalleryModal({ isOpen, onClose, gallery }: GalleryModalP
                         </div>
                     </motion.div>
                 </>
-            )}
-        </AnimatePresence>
+            )
+            }
+        </AnimatePresence >
     );
 }
