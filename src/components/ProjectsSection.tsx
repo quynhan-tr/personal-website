@@ -32,9 +32,9 @@ export default function ProjectsSection() {
                     {project.title}
                   </h3>
                 </div>
-                {/* Tech Stack Spacer */}
-                <div className="px-6 md:px-8 pb-6">
-                  <div className="flex flex-wrap gap-2">
+                {/* Tech Stack Spacer - Fixed Height to ensure uniform card size */}
+                <div className="px-6 md:px-8 pb-6 h-[7rem] flex items-start">
+                  <div className="flex flex-wrap gap-2 w-full"> {/* w-full added to ensure checking wrapping */}
                     {project.techStack.map((tech, i) => (
                       <span
                         key={i}
@@ -49,7 +49,10 @@ export default function ProjectsSection() {
             </div>
 
             {/* Actual Card (Absolute) */}
-            <div className="absolute inset-0 w-full h-max transition-all duration-300 ease-in-out group-hover:-translate-y-2 group-hover:scale-110 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] group-hover:z-50">
+            <div
+              onClick={() => window.open(project.link || project.github, "_blank")}
+              className="absolute top-0 left-0 w-full min-h-full transition-all duration-300 ease-in-out group-hover:-translate-y-2 group-hover:scale-110 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] group-hover:z-50 cursor-pointer"
+            >
               <div className="flex flex-col bg-[#18191b] group-hover:bg-[#18191b]/95 group-hover:backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden shadow-lg h-full">
                 {/* Image Container */}
                 <div className="relative w-full aspect-[16/9] overflow-hidden">
@@ -80,6 +83,7 @@ export default function ProjectsSection() {
                           rel="noopener noreferrer"
                           className="text-white/70 hover:text-white transition-colors"
                           aria-label={`View ${project.title} on GitHub`}
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <FiGithub size={20} />
                         </a>
@@ -91,6 +95,7 @@ export default function ProjectsSection() {
                           rel="noopener noreferrer"
                           className="text-white/70 hover:text-white transition-colors"
                           aria-label={`Visit ${project.title}`}
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <FiExternalLink size={20} />
                         </a>
@@ -99,8 +104,8 @@ export default function ProjectsSection() {
                   </div>
 
                   {/* Tech Stack (Always Visible) */}
-                  <div className="px-6 md:px-8 pb-6">
-                    <div className="flex flex-wrap gap-2">
+                  <div className="px-6 md:px-8 pb-6 h-[7rem] flex items-start">
+                    <div className="flex flex-wrap gap-2 w-full">
                       {project.techStack.map((tech, i) => (
                         <span
                           key={i}
