@@ -19,9 +19,9 @@ export const projects: Project[] = [
   {
     title: "Notation",
     description: "Turn your handwritten notes into professional LaTeX documents with high-precision AI recognition.",
-    techStack: ["Vite", "React", "TypeScript", "Ruby on Rails", "Gemini API"],
-    link: "https://github.com/quynhan-tr/notation",
-    github: "https://mathtolatex.com/",
+    techStack: ["Vite", "React", "TypeScript", "Ruby on Rails", "Docker", "GCP", "Gemini API"],
+    link: "https://mathtolatex.com/",
+    github: "https://github.com/quynhan-tr/notation",
     image: "/projects/notation.png",
   },
   {
@@ -43,15 +43,23 @@ export const projects: Project[] = [
   {
     title: "UW Love Flow",
     description: "A playful platform that matches people based on MBTI, hobbies, and shared interests.",
-    techStack: ["Flask", "HTML", "CSS", "JavaScript", "PostgreSQL", "REST APIs"],
+    techStack: ["Python", "Flask", "HTML", "CSS", "JavaScript", "PostgreSQL", "REST APIs"],
     github: "https://github.com/quynhan-tr/uw-love-flow",
     image: "/projects/uw_love_flow.png",
   },
   {
-    title: "InSync",
-    description: "Inspired by chromesthesia, where sound becomes color and motion, InSync reimagines music as something you can see, feel, and share.",
-    techStack: ["JavaScript", "React", "Python", "Spotify Developer API"],
-    github: "https://github.com/RohanKatreddy/UofTHacks12",
-    image: "/projects/insync.png",
+    title: "We Do Wonder",
+    description: "A visual journey through We Do Wonder NPO's mission to inspire change in Vietnam through education and community.",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/quynhan-tr/wedowonder",
+    link: "https://wedowonder.vercel.app/",
+    image: "/projects/wedowonder.png",
   },
+  // {
+  //   title: "InSync",
+  //   description: "Inspired by chromesthesia, where sound becomes color and motion, InSync reimagines music as something you can see, feel, and share.",
+  //   techStack: ["JavaScript", "React", "Python", "Spotify Developer API"],
+  //   github: "https://github.com/RohanKatreddy/UofTHacks12",
+  //   image: "/projects/insync.png",
+  // },
 ];
