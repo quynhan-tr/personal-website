@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import Carousels from '../components/Carousels';
+
 import About from '../components/About';
 import ExperienceSection from "../components/ExperienceSection";
 import ProjectsSection from "../components/ProjectsSection";
@@ -13,7 +13,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about">
         <About />
-        <Carousels />
+        {/* <Carousels /> */}
       </section>
 
       {/* Experience Section */}

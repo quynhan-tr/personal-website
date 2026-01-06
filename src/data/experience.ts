@@ -1,19 +1,20 @@
-export const experiences = [
+export interface Experience {
+  icon: string;
+  bgImage: string;
+  title: string;
+  description: string;
+  link: string;
+  techStack: string[];
+}
+
+export const experiences: Experience[] = [
   {
     icon: "/logos/propel.png",
     bgImage: "/banners/propelholdings.png",
     title: "Propel Holdings Inc",
     description: "Software Developer",
     link: "https://www.propelholdings.com/",
-    techStack: ["Java", "Spring Boot", "JDBC", "SQL", "Angular", "Tomcat"]
-  },
-  {
-    icon: "/logos/tedx.svg",
-    bgImage: "/banners/tedx.png",
-    title: "TEDxUW",
-    description: "Software Developer",
-    link: "https://www.linkedin.com/company/tedxuw",
-    techStack: ["Next.js", "Typescript", "Tailwind CSS", "NeonDB", "PostgreSQL", "OAuth"]
+    techStack: ["Java", "Spring Boot", "Angular", "TypeScript", "SQL", "RESTful API", "Google Web Toolkit", "JPA/Hibernate", "Mockito", "AWS"],
   },
   {
     icon: "/logos/dsc.svg",
@@ -21,7 +22,15 @@ export const experiences = [
     title: "UW Data Science Club",
     description: "Software Developer",
     link: "https://www.uwdatascience.ca/",
-    techStack: ["Next.js", "Typescript", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API", "Groq API"]
+    techStack: ["Next.js", "React", "Typescript", "Tailwind CSS", "Node.js", "MongoDB", "Supabase", "Python", "SQL", "OpenAI API"],
+  },
+  {
+    icon: "/logos/tedx.svg",
+    bgImage: "/banners/tedx.png",
+    title: "TEDxUW",
+    description: "Software Developer",
+    link: "https://www.linkedin.com/company/tedxuw",
+    techStack: ["Next.js", "React", "Typescript", "Tailwind CSS", "Framer Motion"],
   },
   {
     icon: "/logos/csc.svg",

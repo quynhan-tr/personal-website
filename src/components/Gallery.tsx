@@ -13,7 +13,7 @@ export default function Gallery({ item }: GalleryProps) {
     <div className="flex w-full h-[80vh] items-center justify-center relative">
       {/* Main Image */}
       <div className="flex-1 flex flex-col items-center justify-center h-full">
-        <h2 className="text-2xl font-bold mb-2 text-white">{item.title}</h2>
+        <h2 className="text-2xl font-medium mb-2 text-white">{item.title}</h2>
         <p className="mb-4 text-gray-300 max-w-2xl text-center">{item.description}</p>
         <div className="relative h-[60vh] w-auto max-w-4xl rounded-3xl overflow-hidden bg-black">
           <Image
@@ -33,9 +33,8 @@ export default function Gallery({ item }: GalleryProps) {
           <button
             key={photo}
             onClick={() => setSelected(idx)}
-            className={`rounded-xl overflow-hidden border-2 transition-all duration-200 ${
-              idx === selected ? "border-white" : "border-transparent opacity-70"
-            }`}
+            className={`rounded-xl overflow-hidden border-2 transition-all duration-200 ${idx === selected ? "border-white" : "border-transparent opacity-70"
+              }`}
             style={{ width: 60, height: 60 }}
             aria-label={`Preview ${item.title} photo ${idx + 1}`}
           >

@@ -4,6 +4,12 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const intro = `I'm An, a second-year CS student at the University of Waterloo. *This site is a collection of my projects, experiences, and other things I've done. Feel free to look around!`;
 
@@ -24,7 +30,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="text-white px-4 md:px-8 lg:px-10 py-16 md:py-24 lg:py-30 flex flex-col lg:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-20">
+    <section id="about" className="text-white px-4 md:px-8 lg:px-10 py-16 md:py-20 lg:py-24 flex flex-col lg:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-20">
       <div
         className="w-full max-w-xs md:max-w-sm"
         ref={imgRef}
@@ -52,10 +58,10 @@ export default function About() {
         />
       </div>
       <div className="max-w-xl text-center lg:text-left">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 md:mb-8">
+        <h1 className={`text-3xl md:text-4xl lg:text-5xl font-normal mb-6 md:mb-8 ${playfair.className}`}>
           <SplitTextAnimated text="hello there!" />
         </h1>
-        <p className="text-base md:text-lg lg:text-xl text-gray-300 leading-6 md:leading-7 mb-2 md:mb-4 min-h-[4rem] md:min-h-[5rem]">
+        <p className="text-base md:text-lg lg:text-xl text-gray-300 leading-6 md:leading-7 mb-4 md:mb-8 min-h-[4rem] md:min-h-[5rem]">
           {intro.split('*').map((line, idx) => (
             <span key={idx} className="block">
               <SplitTextAnimated text={line.trim()} />
