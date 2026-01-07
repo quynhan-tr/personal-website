@@ -29,7 +29,7 @@ export const experiences: Experience[] = [
     bgImage: "/banners/tedx.png",
     title: "TEDxUW",
     description: "Software Developer",
-    link: "https://www.linkedin.com/company/tedxuw",
+    link: "https://www.tedxuw.ca/",
     techStack: ["Next.js", "React", "Typescript", "Tailwind CSS", "Framer Motion"],
   },
   {
