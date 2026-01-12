@@ -219,7 +219,7 @@ export default function GalleryModal({ isOpen, onClose, gallery }: GalleryModalP
                                                 };
 
                                                 if (gallery.slug === 'we-do-wonder') {
-                                                    return renderDescription(gallery.description, "We Do Wonder", "https://www.facebook.com/wedowonder");
+                                                    return renderDescription(gallery.description, "We Do Wonder", "https://wedowonder.vercel.app/");
                                                 } else if (gallery.slug === 'jamhacks') {
                                                     return renderDescription(gallery.description, "JAMHacks", "https://www.jamhacks.ca/");
                                                 } else {

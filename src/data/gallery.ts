@@ -41,7 +41,7 @@ export const galleries: GalleryItem[] = [
   {
     slug: "mll-leadership-club",
     title: "MLL Leadership Club",
-    banner: "/galleryImages/mll/2.jpg",
+    banner: "/galleryImages/mll/2.JPG",
     description: "In my 2 years in high school in Canada after transferring from Vietnam, I co-founded the MLL (Multilingual Language Learners) Leadership Club. We organized many fun things including the two main annual Cultural Fairs. * For the first iteration of the Cultural Fair, being fresh back from Covid made hosting a large scale in person event faced many restrictions, and doubts about participation turn out. With 3 months from the first meeting to the event date, we were able to secure school funding, recruit 40+ volunteers, plan and rehearse all displays and performances. * The event turned out amazing. Students, teachers, staffs. Everyone were enjoying themselves, dancing, talking, sharing their display, their culture. * The club is now led by a new team and has now grown to 100+ members, organized 2 more annual Cultural Fairs.",
     photos: [
       "/galleryImages/mll/1.JPG",
