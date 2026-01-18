@@ -41,11 +41,11 @@ export const projects: Project[] = [
     image: "/projects/estimathon.png",
   },
   {
-    title: "UW Love Flow",
-    description: "A playful platform that matches people based on MBTI, hobbies, and shared interests.",
+    title: "Netflow",
+    description: "A playful platform that connects people based on MBTI, hobbies, and shared interests.",
     techStack: ["Python", "Flask", "HTML", "CSS", "JavaScript", "PostgreSQL", "REST APIs"],
-    github: "https://github.com/quynhan-tr/uw-love-flow",
-    image: "/projects/uw_love_flow.png",
+    github: "https://github.com/quynhan-tr/netflow",
+    image: "/projects/netflow.png",
   },
   {
     title: "We Do Wonder",
