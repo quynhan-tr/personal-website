@@ -21,7 +21,7 @@ interface SidequestCardProps {
 
 function SidequestCard({ item, onOpen }: SidequestCardProps) {
   return (
-    <div className="relative group h-[400px] w-[300px] md:h-[500px] md:w-[400px] flex-shrink-0 overflow-hidden rounded-3xl bg-neutral-900 shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+    <div className="relative group aspect-[4/3] md:aspect-auto w-full h-full overflow-hidden rounded-3xl bg-neutral-900 shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -58,45 +58,9 @@ function SidequestCard({ item, onOpen }: SidequestCardProps) {
 }
 
 export default function More() {
-  const containerRef = React.useRef<HTMLDivElement>(null);
   const pageRef = React.useRef<HTMLDivElement>(null);
-  // triple the list for infinite scroll simulation
-  const extendedGalleries = [...galleries, ...galleries, ...galleries];
 
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
-
-  React.useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Initialize scroll to the middle set
-    const initScroll = () => {
-      container.scrollLeft = container.scrollWidth / 3;
-    };
-
-    // Tiny timeout to ensure layout is ready
-    setTimeout(initScroll, 0);
-
-    const handleScroll = () => {
-      const oneThird = container.scrollWidth / 3;
-
-      // If we scroll past the second set (into third), jump back to first (middle relative)
-      if (container.scrollLeft >= oneThird * 2) {
-        container.scrollLeft -= oneThird;
-      }
-      // If we scroll into the first set, jump forward to second
-      else if (container.scrollLeft < oneThird) {
-        container.scrollLeft += oneThird;
-      }
-    };
-
-    // Attach scroll listener to CONTAINER for infinite loop logic
-    container.addEventListener("scroll", handleScroll);
-
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const handleOpen = (slug?: string) => {
     if (slug) {
@@ -115,25 +79,27 @@ export default function More() {
       ref={pageRef}
       className="fixed inset-0 z-0 w-full flex flex-col pt-24 pb-4 md:pt-32 md:pb-8 px-4 md:px-12 bg-[#121416] overflow-hidden overscroll-none"
     >
-      {/* Header Section */}
-      <div className="flex-shrink-0 mb-4 md:mb-6">
-        <p className="text-xl md:text-2xl text-gray-300 w-full whitespace-nowrap font-serif">
-          <SplitTextAnimated text={intro} />
-        </p>
-      </div>
+      {/* Main Content - Text and Grid Side by Side */}
+      <div className="flex-1 flex flex-col md:flex-row gap-8 overflow-hidden">
+        {/* Left Side - Intro Text */}
+        <div className="flex-shrink-0">
+          <p className="text-xl md:text-2xl text-gray-300 whitespace-nowrap font-serif">
+            <SplitTextAnimated text={intro} />
+          </p>
+        </div>
 
-      {/* Carousel Section */}
-      <div
-        ref={containerRef}
-        className="flex-1 w-full overflow-x-auto flex items-center gap-8 md:gap-12 px-2 no-scrollbar"
-      >
-        {extendedGalleries.map((item, idx) => (
-          <SidequestCard
-            key={`${idx}-${item.title}`}
-            item={item}
-            onOpen={handleOpen}
-          />
-        ))}
+        {/* Right Side - Grid */}
+        <div className="flex-1 flex items-center justify-end overflow-hidden h-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full max-w-[1250px] md:max-h-[82vh] md:aspect-[4/3] px-2">
+            {galleries.map((item, idx) => (
+              <SidequestCard
+                key={`${idx}-${item.title}`}
+                item={item}
+                onOpen={handleOpen}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
       <GalleryModal
