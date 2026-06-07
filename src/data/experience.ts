@@ -9,10 +9,18 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    icon: "/logos/carta.svg",
+    bgImage: "/banners/carta.jpeg",
+    title: "Carta",
+    description: "Software Engineer Intern",
+    link: "https://carta.com/",
+    techStack: ["Python", "Django", "React", "TypeScript", "Docker"],
+  },
+  {
     icon: "/logos/propel.png",
     bgImage: "/banners/propelholdings.png",
-    title: "Propel Holdings Inc",
-    description: "Software Developer",
+    title: "Propel Holdings",
+    description: "Software Engineer Intern",
     link: "https://www.propelholdings.com/",
     techStack: ["Java", "Spring Boot", "Angular", "TypeScript", "SQL", "RESTful API", "Google Web Toolkit", "JPA/Hibernate", "Mockito", "AWS"],
   },

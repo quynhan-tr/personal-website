@@ -37,7 +37,7 @@ export const projects: Project[] = [
     description: "A comprehensive dashboard for the Jane Street Estimathon.",
     techStack: ["HTML", "CSS", "JavaScript", "Google Apps Script"],
     link: "https://uw-estimathon.vercel.app/",
-    github: "https://github.com/quynhan-tr/uw-estimathon",
+    github: "https://github.com/quynhan-tr/estimathon",
     image: "/projects/estimathon.png",
   },
   {
