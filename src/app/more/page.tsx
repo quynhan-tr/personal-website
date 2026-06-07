@@ -16,42 +16,51 @@ const intro = "a little collection of cool things I've been part of";
 
 interface SidequestCardProps {
   item: GalleryItem;
+  index: number;
+  isLoaded: boolean;
   onOpen: (slug?: string) => void;
 }
 
-function SidequestCard({ item, onOpen }: SidequestCardProps) {
+function SidequestCard({ item, index, isLoaded, onOpen }: SidequestCardProps) {
   return (
-    <div className="relative group aspect-[4/3] md:aspect-auto w-full h-full overflow-hidden rounded-3xl bg-neutral-900 shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={item.banner}
-          alt={item.title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110 opacity-60 group-hover:opacity-40"
-        />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/90 pointer-events-none" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-8">
-        <div className="flex items-center gap-2 text-[10px] md:text-xs font-semibold tracking-widest uppercase text-gray-300 mb-2">
-          <span>{item.date}</span>
-          <span className="text-sky-400">●</span>
-          <span>{item.location}</span>
+    <div
+      className={`w-full h-full transition-all duration-700 ease-out ${
+        isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+      style={{ transitionDelay: `${index * 150 + 300}ms` }}
+    >
+      <div
+        onClick={() => onOpen(item.slug)}
+        className="relative group aspect-[4/3] md:aspect-auto w-full h-full overflow-hidden rounded-3xl bg-neutral-900 shadow-2xl transition-transform duration-300 hover:scale-[1.02] cursor-pointer"
+      >
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={item.banner}
+            alt={item.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110 opacity-60 group-hover:opacity-40"
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/90 pointer-events-none" />
         </div>
 
-        <h3 className={`${playfair.className} text-2xl md:text-4xl font-normal text-white mb-4 leading-tight`}>
-          {item.title}
-        </h3>
+        {/* Content */}
+        <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-8">
+          <div className="flex items-center gap-2 text-[10px] md:text-xs font-semibold tracking-widest uppercase text-gray-300 mb-2">
+            <span>{item.date}</span>
+            <span className="text-sky-400">●</span>
+            <span>{item.location}</span>
+          </div>
 
-        <button
-          onClick={() => onOpen(item.slug)}
-          className="w-max px-5 py-2 border border-white/30 rounded-full text-xs font-semibold tracking-widest text-white hover:bg-white hover:text-black hover:border-white transition-colors duration-300"
-        >
-          EXPLORE
-        </button>
+          <h3 className={`${playfair.className} text-2xl md:text-4xl font-normal text-white mb-4 leading-tight`}>
+            {item.title}
+          </h3>
+
+          <div className="w-max px-5 py-2 border border-white/30 rounded-full text-xs font-semibold tracking-widest text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-colors duration-300">
+            EXPLORE
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -61,6 +70,11 @@ export default function More() {
   const pageRef = React.useRef<HTMLDivElement>(null);
 
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  React.useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const handleOpen = (slug?: string) => {
     if (slug) {
@@ -95,6 +109,8 @@ export default function More() {
               <SidequestCard
                 key={`${idx}-${item.title}`}
                 item={item}
+                index={idx}
+                isLoaded={isLoaded}
                 onOpen={handleOpen}
               />
             ))}
