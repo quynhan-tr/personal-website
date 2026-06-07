@@ -41,14 +41,6 @@ export const experiences: Experience[] = [
     techStack: ["Next.js", "React", "Typescript", "Tailwind CSS", "Framer Motion"],
   },
   {
-    icon: "/logos/csc.svg",
-    bgImage: "/banners/csc.png",
-    title: "UW Computer Science Club",
-    description: "Technical Organizer",
-    link: "https://csclub.uwaterloo.ca/",
-    techStack: ["Data Structures", "Algorithms", "Event Planning", "Leadership"]
-  },
-  {
     icon: "/logos/alpha.png",
     bgImage: "/banners/alpha.png",
     title: "Alpha Coding",
