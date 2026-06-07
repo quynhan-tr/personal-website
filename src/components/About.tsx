@@ -2,7 +2,6 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
 import { Playfair_Display } from "next/font/google";
 
