@@ -108,7 +108,7 @@ export default function GalleryPage({ params }: PageProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-0 w-full flex flex-col pt-24 pb-4 md:pt-32 md:pb-8 px-4 md:px-12 bg-[#121416] overflow-hidden overscroll-none">
+    <div className="fixed inset-0 z-0 w-full flex flex-col pt-16 pb-2 md:pt-24 md:pb-4 px-4 md:px-12 bg-[#121416] overflow-hidden overscroll-none">
       {/* Split Layout Container */}
       <div className="flex-1 flex flex-col md:flex-row gap-8 md:gap-16 overflow-hidden h-full relative">
         {/* Left Column: Text Content */}

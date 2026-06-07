@@ -76,7 +76,7 @@ export default function More() {
   return (
     <div
       ref={pageRef}
-      className="fixed inset-0 z-0 w-full flex flex-col pt-24 pb-4 md:pt-32 md:pb-8 px-4 md:px-12 bg-[#121416] overflow-hidden overscroll-none"
+      className="fixed inset-0 z-0 w-full flex flex-col pt-16 pb-2 md:pt-24 md:pb-4 px-4 md:px-12 bg-[#121416] overflow-hidden overscroll-none"
     >
       {/* Main Content - Text and Grid Side by Side */}
       <div className="flex-1 flex flex-col md:flex-row gap-8 overflow-hidden">

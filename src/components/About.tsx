@@ -83,13 +83,13 @@ export default function About() {
           >
             projects
           </a>
-          <Link
+          {/* <Link
             href="/more"
             className="border border-white px-3 md:px-4 py-2 rounded hover:bg-white hover:text-black transition scroll-smooth opacity-0 animate-fade-in text-base md:text-lg"
             style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
           >
             more about me
-          </Link>
+          </Link> */}
         </div>
       </div>
     </section>
