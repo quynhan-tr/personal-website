@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Playfair_Display } from "next/font/google";
 import SplitTextAnimated from "@/components/SplitTextAnimated";
-import GalleryModal from "@/components/GalleryModal";
 import { galleries, GalleryItem } from "@/data/gallery";
 
 const playfair = Playfair_Display({
@@ -18,10 +18,9 @@ interface SidequestCardProps {
   item: GalleryItem;
   index: number;
   isLoaded: boolean;
-  onOpen: (slug?: string) => void;
 }
 
-function SidequestCard({ item, index, isLoaded, onOpen }: SidequestCardProps) {
+function SidequestCard({ item, index, isLoaded }: SidequestCardProps) {
   return (
     <div
       className={`w-full h-full transition-all duration-700 ease-out ${
@@ -29,9 +28,9 @@ function SidequestCard({ item, index, isLoaded, onOpen }: SidequestCardProps) {
       }`}
       style={{ transitionDelay: `${index * 150 + 300}ms` }}
     >
-      <div
-        onClick={() => onOpen(item.slug)}
-        className="relative group aspect-[4/3] md:aspect-auto w-full h-full overflow-hidden rounded-3xl bg-neutral-900 shadow-2xl transition-transform duration-300 hover:scale-[1.02] cursor-pointer"
+      <Link
+        href={`/more/${item.slug}`}
+        className="block relative group aspect-[4/3] md:aspect-auto w-full h-full overflow-hidden rounded-3xl bg-neutral-900 shadow-2xl transition-transform duration-300 hover:scale-[1.02] cursor-pointer"
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -61,32 +60,18 @@ function SidequestCard({ item, index, isLoaded, onOpen }: SidequestCardProps) {
             EXPLORE
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
 
 export default function More() {
   const pageRef = React.useRef<HTMLDivElement>(null);
-
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   React.useEffect(() => {
     setIsLoaded(true);
   }, []);
-
-  const handleOpen = (slug?: string) => {
-    if (slug) {
-      setSelectedSlug(slug);
-    }
-  };
-
-  const handleClose = () => {
-    setSelectedSlug(null);
-  };
-
-  const selectedGallery = galleries.find(g => g.slug === selectedSlug);
 
   return (
     <div
@@ -111,18 +96,11 @@ export default function More() {
                 item={item}
                 index={idx}
                 isLoaded={isLoaded}
-                onOpen={handleOpen}
               />
             ))}
           </div>
         </div>
       </div>
-
-      <GalleryModal
-        isOpen={!!selectedSlug}
-        onClose={handleClose}
-        gallery={selectedGallery}
-      />
     </div>
   );
 }
